@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing Page - Cervejas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .carrinho-lateral {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100%;
+      background-color: #f8f9fa;
+      border-left: 1px solid #ddd;
+      padding: 15px;
+      overflow-y: auto;
+      z-index: 9999;
+      transition: all 0.3s ease-in-out;
+    }
+    .carrinho-minimizado {
+      display: none;
+    }
+    .botao-expandir {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10000;
+    }
+    .produto-longneck {
+      display: none;
+    }
+    .produto-longneck.visivel {
+      display: block !important;
+      max-width: 350px;
+      ;
+    }
+
+    .cerv-tamanho {
+  max-height: 220px;
+  min-height: 220px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  display: block;
+  padding-top: 20px;  
+}
+
+#carouselExample {
+  max-height: 600px;
+  overflow: hidden;
+}
+#carouselExample .carousel-item img {
+  max-height: 600px;
+  width: 100%;
+  object-fit: cover;
+}
+
+#itens-carrinho .item {
+  border-bottom: 1px solid #ccc;
+  padding: 5px 0;
+  font-size: 0.9rem;
+}
+
+    .categoria-btn {
+  background-color: #ffffff; /* cor personalizada */
+  color: #2e2e2e;
+  border: none;
+  height: 80px;
+}
+.categoria-btn:hover {
+  background-color: #fab403;
+  color: rgb(45, 45, 45);
+}
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#home">  
+  <img src="https://i.ibb.co/xtJJhFPp/88ml-Delivery-Distribuidora.webp" alt="Logo" style="height:40px; margin-right:10px;">88ml Delivery - Distribuidora de Bebidas
+</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
+          <li class="nav-item"><a class="nav-link" href="#parceiro">Seja Parceiro</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Carrossel -->
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active" ><img src="https://i.ibb.co/S8Xj45F/adega1.jpg" class="d-block w-100" alt="Imagem 1"></div>
+      <div class="carousel-item"><img src="https://i.ibb.co/rGJrmycD/adega2.jpg" class="d-block w-100" alt="Imagem 2"></div>
+      <div class="carousel-item"><img src="https://i.ibb.co/Gf8DNFqp/adega3.jpg" class="d-block w-100" alt="Imagem 3"></div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Catálogo -->
+  <section id="catalogo" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-5">Catálogo</h2>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4">
+          <div class="col-12 col-md-12 col-lg-12 mx-auto">
+            <div class="card ">
+              <img src="https://recursos.clubedomalte.com.br/i/_mainstream/populares_mob_.png" class="card-img-top cerv-tamanho" alt="Cerveja Brahma">
+              <div class="card-body ">
+                <h5 class="card-title text-center">CERVEJAS</h5>
+      <div class="categoria mb-4">
+  <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-473ml')">
+    <img src="https://i.ibb.co/575H1cS/brahma.png" alt="Cerveja 473ml" style="height:40px; margin-right:15px;">
+    Cerveja 473ml (Latão)
+  </button>
+  <div id="cat-473ml" class="produtos-categoria mt-3" style="display: none;">
+    
+      
+      
+      <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center" id="produtos">
+        <!-- Exemplo de produto repetido (10 produtos, 5 visíveis inicialmente) -->
+        <div class="col produto-longneck visivel">
+          <div class="card">
+            <img src="https://i.ibb.co/575H1cS/brahma.png" class="card-img-top cerv-tamanho" alt="Cerveja">
+            <div class="card-body">
+              <h5 class="card-title">Brahma 473ml</h5>
+              <p class="card-text">R$ 4,75</p>
+              <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                <input type="number" class="form-control text-center" value="0" min="0">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+              </div>
+              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col produto-longneck visivel">
+          <div class="card">
+            <img src="https://i.ibb.co/gZ9zHGBj/skol.webp" class="card-img-top cerv-tamanho" alt="Cerveja">
+            <div class="card-body">
+              <h5 class="card-title">Skol 473ml</h5>
+              <p class="card-text">R$ 4,75</p>
+              <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                <input type="number" class="form-control text-center" value="0" min="0">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+              </div>
+              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col produto-longneck visivel">
+          <div class="card">
+            <img src="https://i.ibb.co/Hp7WmBGd/amstel.webp" class="card-img-top cerv-tamanho" alt="Cerveja">
+            <div class="card-body">
+              <h5 class="card-title">Amstel 473ml</h5>
+              <p class="card-text">R$ 4,85</p>
+              <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                <input type="number" class="form-control text-center" value="0" min="0">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+              </div>
+              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col produto-longneck visivel">
+          <div class="card">
+            <img src="https://i.ibb.co/S4wkSfwY/heineken.png" class="card-img-top cerv-tamanho" alt="Cerveja">
+            <div class="card-body">
+              <h5 class="card-title">Heineken 473ml</h5>
+              <p class="card-text">R$ 6,49</p>
+              <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                <input type="number" class="form-control text-center" value="0" min="0">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+              </div>
+              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col produto-longneck visivel">
+          <div class="card">
+            <img src="https://i.ibb.co/d9QJYhd/original.webp" class="card-img-top cerv-tamanho" alt="Cerveja">
+            <div class="card-body">
+              <h5 class="card-title">Original 473ml</h5>
+              <p class="card-text">R$ 5,29</p>
+              <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                <input type="number" class="form-control text-center" value="0" min="0">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+              </div>
+              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+
+       <div class="col produto-longneck ">
+  <div class="card">
+    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_880502-MLU77682290836_072024-F.webp" class="card-img-top cerv-tamanho alt="Cerveja">
+    <div class="card-body">
+      <h5 class="card-title">Budweiser</h5>
+      <p class="card-text">Carregando preço...</p>
+      <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+      <div class="input-group mb-2">
+        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+        <input type="number" class="form-control text-center" value="0" min="0">
+        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+      </div>
+      <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+</div>
+
+       <div class="col produto-longneck ">
+  <div class="card">
+    <img src="itaipava.webp" class="card-img-top cerv-tamanho alt="Cerveja">
+    <div class="card-body">
+      <h5 class="card-title">Itaipava</h5>
+      <p class="card-text">Carregando preço...</p>
+      <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+      <div class="input-group mb-2">
+        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+        <input type="number" class="form-control text-center" value="0" min="0">
+        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+      </div>
+      <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+</div>
+        <div class="col produto-longneck ">
+          <div class="card">
+            <img src="cerveja.jpg" class="card-img-top" alt="Cerveja">
+            <div class="card-body">
+              <h5 class="card-title">Cerveja 1</h5>
+              <p class="card-text">R$ 7,90</p>
+              <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                <input type="number" class="form-control text-center" value="0" min="0">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+              </div>
+              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col produto-longneck ">
+          <div class="card">
+            <img src="cerveja.jpg" class="card-img-top" alt="Cerveja">
+            <div class="card-body">
+              <h5 class="card-title">Cerveja 1</h5>
+              <p class="card-text">R$ 7,90</p>
+              <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                <input type="number" class="form-control text-center" value="0" min="0">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+              </div>
+              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col produto-longneck ">
+          <div class="card">
+            <img src="cerveja.jpg" class="card-img-top" alt="Cerveja">
+            <div class="card-body">
+              <h5 class="card-title">Cerveja 1</h5>
+              <p class="card-text">R$ 7,90</p>
+              <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                <input type="number" class="form-control text-center" value="0" min="0">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+              </div>
+              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col produto-longneck ">
+          <div class="card">
+            <img src="cerveja.jpg" class="card-img-top" alt="Cerveja">
+            <div class="card-body">
+              <h5 class="card-title">Cerveja 1</h5>
+              <p class="card-text">R$ 7,90</p>
+              <div class="input-group mb-2">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                <input type="number" class="form-control text-center" value="0" min="0">
+                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+              </div>
+              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+            </div>
+          </div>
+        </div>
+        <!-- Repita os blocos acima para criar até 10 produtos com a mesma classe 'produto-longneck' -->
+        <!-- Apenas os 5 primeiros devem ter a classe 'visivel' -->
+      
+      
+    
+    </div>
+      <div class="text-center mt-4">
+        <button class="btn btn-outline-primary" id="btnVerMais" onclick="alternarProdutos()">Ver mais produtos</button>
+      </div>
+      
+    </div>
+
+        
+    </div>
+         </div>
+    </div>
+  </div>
+
+    
+          <div class="col-12 col-md-12 col-lg-12 mx-auto">
+            <div class="card ">
+              <img src="https://images-americanas.b2w.io/produtos/7491932537/imagens/combo-vodkas-ciroc-750ml-smirnorff-998ml-absolut-750ml/7491932537_1_xlarge.jpg" class="card-img-top cerv-tamanho" alt="Cerveja Brahma">
+              <div class="card-body ">
+                <h5 class="card-title text-center">Vodkas</h5>
+      <div class="categoria mb-4">
+  <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-473ml')">
+    <img src="https://i.ibb.co/575H1cS/brahma.png" alt="Cerveja 473ml" style="height:40px; margin-right:15px;">
+    Vodkas pura
+  </button>
+  <div id="cat-473ml" class="produtos-categoria mt-3" style="display: none;">
+    
+      
+      
+      <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center" id="produtos">
+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+
+<script>
+function toggleCategoria(id) {
+  const div = document.getElementById(id);
+  div.style.display = div.style.display === "none" ? "block" : "none";
+}
+</script>
+
+  </section>
+
+  <!-- Carrinho -->
+  <div id="carrinho" class="carrinho-lateral">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h5 class="mb-0">Carrinho</h5>
+      <button class="btn btn-sm btn-outline-secondary" onclick="minimizarCarrinho()">⬇️</button>
+    </div>
+    <div id="itens-carrinho" class="mb-3"></div>
+    <div class="fw-bold text-end me-2">Total: R$ <span id="total-geral">0,00</span></div>
+    <div class="text-center mt-3">
+      <button class="btn btn-success btn-sm" onclick="enviarPedido()">Enviar Pedido</button>
+    </div>
+  </div>
+
+  <button id="botao-expandir" class="btn btn-primary botao-expandir d-none" onclick="expandirCarrinho()">
+    🛒 Carrinho (<span id="total-carrinho">R$0,00</span>)
+  </button>
+
+  <script>
+    const carrinho = [];
+    let mostrarTodos = false;
+
+    function alterarQuantidade(button, delta) {
+      const input = button.parentElement.querySelector("input");
+      let value = parseInt(input.value, 10);
+      value = isNaN(value) ? 0 : value + delta;
+      if (value < 0) value = 0;
+      input.value = value;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".btn-primary").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const card = btn.closest(".card-body");
+          const nome = card.querySelector(".card-title").innerText;
+          const preco = parseFloat(card.querySelector(".card-text").innerText.replace("R$", "").replace(",", "."));
+          const quantidade = parseInt(card.querySelector("input").value, 10);
+          if (quantidade > 0) {
+            adicionarAoCarrinho(nome, quantidade, preco);
+            card.querySelector("input").value = 0;
+          }
+        });
+      });
+    });
+
+    function adicionarAoCarrinho(nome, quantidade, preco) {
+      const existente = carrinho.find(item => item.nome === nome);
+      if (existente) {
+        existente.quantidade += quantidade;
+      } else {
+        carrinho.push({ nome, quantidade, preco });
+      }
+      atualizarCarrinho();
+    }
+
+    function removerItem(index) {
+      if (confirm("Remover este item do carrinho?")) {
+        carrinho.splice(index, 1);
+        atualizarCarrinho();
+      }
+    }
+
+    function atualizarCarrinho() {
+      const container = document.getElementById("itens-carrinho");
+      container.innerHTML = "";
+      let total = 0;
+      let totalItens = 0;
+
+      carrinho.forEach((item, index) => {
+        const subtotal = item.quantidade * item.preco;
+        total += subtotal;
+        totalItens += item.quantidade;
+
+        container.innerHTML += `
+          <div class="item d-flex justify-content-between align-items-start">
+            <div>
+              ${item.nome}<br>
+              ${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = 
+              <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
+            </div>
+            <button class="btn btn-sm btn-outline-danger ms-2" onclick="removerItem(${index})">🗑️</button>
+          </div>
+        `;
+      });
+
+      document.getElementById("total-geral").innerText = total.toFixed(2).replace(".", ",");
+      document.getElementById("total-carrinho").innerText = `R$${total.toFixed(2).replace(".", ",")}`;
+    }
+
+    function minimizarCarrinho() {
+      document.getElementById("carrinho").classList.add("carrinho-minimizado");
+      document.getElementById("botao-expandir").classList.remove("d-none");
+    }
+
+    function expandirCarrinho() {
+      document.getElementById("carrinho").classList.remove("carrinho-minimizado");
+      document.getElementById("botao-expandir").classList.add("d-none");
+    }
+
+    function enviarPedido() {
+      if (carrinho.length === 0) {
+        alert("O carrinho está vazio!");
+        return;
+      }
+      let mensagem = "*Pedido:*\n";
+      carrinho.forEach(item => {
+        const subtotal = item.quantidade * item.preco;
+        mensagem += `• ${item.nome} - ${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = R$ ${subtotal.toFixed(2).replace(".", ",")}\n`;
+      });
+      const total = carrinho.reduce((s, i) => s + i.quantidade * i.preco, 0);
+      mensagem += `\n*Total:* R$ ${total.toFixed(2).replace(".", ",")}`;
+
+      const texto = encodeURIComponent(mensagem);
+      const telefone = "5535999658021";
+      const link = `https://wa.me/${telefone}?text=${texto}`;
+
+      window.open(link, "_blank");
+    }
+
+    function alternarProdutos() {
+  const produtos = document.querySelectorAll(".produto-longneck");
+  const btn = document.getElementById("btnVerMais");
+  mostrarTodos = !mostrarTodos;
+
+  produtos.forEach((produto, index) => {
+    if (mostrarTodos || index < 5) {
+      produto.classList.add("visivel");
+    } else {
+      produto.classList.remove("visivel");
+    }
+  });
+
+  btn.innerText = mostrarTodos ? "Ver menos produtos" : "Ver mais produtos";
+}
+
+  </script>
+
+  <script>
+  const sheetID = '1LzPCbEkzyfXOel2UEYDlcyIBFRlgdep9G3ENvui8cqU';
+  const apiKey = 'AIzaSyA-OqANUQu2qfRGsyFlB60oZ7XdcbaaMpI'; // Substitua pela sua chave
+  const range = 'Página1!A2:C4';
+
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/${range}?key=${apiKey}`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const linhas = data.values;
+
+      document.querySelectorAll('.card').forEach(card => {
+        const nome = card.querySelector('.card-title')?.textContent?.trim().toLowerCase();
+        const precoEl = card.querySelector('.card-text');
+        const statusEl = card.querySelector('.status-text');
+        const botao = card.querySelector('.btn-comprar');
+
+        if (!nome || !precoEl || !statusEl || !botao) return;
+
+        let encontrado = false;
+
+        for (let linha of linhas) {
+          const [produto, preco, status] = linha;
+          if (produto.trim().toLowerCase() === nome) {
+            precoEl.textContent = preco;
+            if (status && status.trim().toLowerCase() === 'esgotado') {
+              statusEl.style.display = 'block';
+              botao.disabled = true;
+              botao.classList.remove('btn-primary');
+              botao.classList.add('btn-secondary');
+              botao.textContent = 'Esgotado';
+            } else {
+              statusEl.style.display = 'none';
+              botao.disabled = false;
+              botao.classList.remove('btn-secondary');
+              botao.classList.add('btn-primary');
+              botao.textContent = 'Adicionar ao Carrinho';
+            }
+            encontrado = true;
+            break;
+          }
+        }
+
+        if (!encontrado) {
+          precoEl.textContent = 'Preço indisponível';
+          statusEl.style.display = 'none';
+          botao.disabled = true;
+          botao.classList.remove('btn-primary');
+          botao.classList.add('btn-secondary');
+          botao.textContent = 'Indisponível';
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Erro ao buscar dados da planilha:', error);
+      document.querySelectorAll('.card-text').forEach(el => {
+        el.textContent = 'Erro ao carregar';
+      });
+    });
+</script>
+</body>
+</html>
