@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>88ml Delivery - Distribuidora de Bebidas</title>
+  <title>Landing Page - Cervejas</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     .carrinho-lateral {
@@ -133,21 +133,23 @@
       
       <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center" id="produtos">
         <!-- Exemplo de produto repetido (10 produtos, 5 visíveis inicialmente) -->
+
         <div class="col produto-longneck visivel">
-          <div class="card">
-            <img src="https://i.ibb.co/575H1cS/brahma.png" class="card-img-top cerv-tamanho" alt="Cerveja">
-            <div class="card-body">
-              <h5 class="card-title">Brahma 473ml</h5>
-              <p class="card-text">R$ 4,75</p>
-              <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-                <input type="number" class="form-control text-center" value="0" min="0">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-              </div>
-              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
+  <div class="card">
+    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_880502-MLU77682290836_072024-F.webp" class="card-img-top cerv-tamanho" alt="Cerveja">
+    <div class="card-body">
+      <h5 class="card-title">Brahma 473ml</h5>
+      <p class="card-text">Carregando preço...</p>
+      <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+      <div class="input-group mb-2">
+        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+        <input type="number" class="form-control text-center" value="0" min="0">
+        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+      </div>
+      <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+</div>
 
         <div class="col produto-longneck visivel">
           <div class="card">
@@ -328,23 +330,784 @@
   </div>
 
     
-          <div class="col-12 col-md-12 col-lg-12 mx-auto">
-            <div class="card ">
-              <img src="https://images-americanas.b2w.io/produtos/7491932537/imagens/combo-vodkas-ciroc-750ml-smirnorff-998ml-absolut-750ml/7491932537_1_xlarge.jpg" class="card-img-top cerv-tamanho" alt="Cerveja Brahma">
-              <div class="card-body ">
-                <h5 class="card-title text-center">Vodkas</h5>
-      <div class="categoria mb-4">
-  <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-473ml')">
-    <img src="https://i.ibb.co/575H1cS/brahma.png" alt="Cerveja 473ml" style="height:40px; margin-right:15px;">
-    Vodkas pura
-  </button>
-  <div id="cat-473ml" class="produtos-categoria mt-3" style="display: none;">
+          
     
       
       
       <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center" id="produtos">
 </div>
           </div>
+
+            <!-- CATEGORIA VODKA -->
+  <div class="card mt-4">
+    <img src="https://i.ibb.co/6XtR7br/vodka.png" class="card-img-top cerv-tamanho" alt="Vodka">
+    <div class="card-body">
+      <h5 class="card-title text-center">VODKAS</h5>
+      <div class="categoria mb-4">
+        <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-vodka')">
+          <img src="https://i.ibb.co/89HTFbh/askov.png" alt="Vodka" style="height:40px; margin-right:15px;">
+          Vodkas Diversas
+        </button>
+        <div id="cat-vodka" class="produtos-categoria mt-3" style="display: none;">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
+            <div class="col">
+              <div class="card">
+                <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
+                <div class="card-body">
+                  <h5 class="card-title">Vodka Askov 900ml</h5>
+                  <p class="card-text">R$ 9,99</p>
+                  <div class="input-group mb-2">
+                    <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                    <input type="number" class="form-control text-center" value="0" min="0">
+                    <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+                  </div>
+                  <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIA WHISKY -->
+  <div class="card mt-4">
+    <img src="https://i.ibb.co/5kJ6z7h/whisky.png" class="card-img-top cerv-tamanho" alt="Whisky">
+    <div class="card-body">
+      <h5 class="card-title text-center">WHISKYS</h5>
+      <div class="categoria mb-4">
+        <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-whisky')">
+          <img src="https://i.ibb.co/ZTVQ3BL/redlabel.png" alt="Whisky" style="height:40px; margin-right:15px;">
+          Whiskys Importados
+        </button>
+        <div id="cat-whisky" class="produtos-categoria mt-3" style="display: none;">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
+            <div class="col">
+              <div class="card">
+                <img src="https://i.ibb.co/ZTVQ3BL/redlabel.png" class="card-img-top cerv-tamanho" alt="Whisky Red Label">
+                <div class="card-body">
+                  <h5 class="card-title">Red Label 1L</h5>
+                  <p class="card-text">R$ 79,90</p>
+                  <div class="input-group mb-2">
+                    <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+                    <input type="number" class="form-control text-center" value="0" min="0">
+                    <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+                  </div>
+                  <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIA OUTROS -->
+  <div class="card mt-4">
+    <img src="https://i.ibb.co/w07LTZF/energeticos.png" class="card-img-top cerv-tamanho" alt="Outros Produtos">
+    <div class="card-body">
+      <h5 class="card-title text-center">CERVEJAS</h5>
+      <div class="categoria mb-4">
+        <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-longneck')">
+          <img src="https://i.ibb.co/YNq59Sr/redbull.png" alt="Outros" style="height:40px; margin-right:15px;">
+          CERVEJA LONG NECK
+        </button>
+        <div id="cat-longneck" class="produtos-categoria mt-3" style="display: none;">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
+  <!-- Vodka 1 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Askov 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 2 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Polar 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 3 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Smirnoff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 4 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Absolut 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 5 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Orloff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 6 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Eristoff 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 7 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Grey Goose 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+      <div class="categoria mb-4">
+        <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-longneckzero')">
+          <img src="https://i.ibb.co/YNq59Sr/redbull.png" alt="Outros" style="height:40px; margin-right:15px;">
+          CERVEJA LONG NECK (SEM ÁLCOOL)
+        </button>
+        <div id="cat-longneckzero" class="produtos-categoria mt-3" style="display: none;">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
+  <!-- Vodka 1 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Askov 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 2 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Polar 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 3 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Smirnoff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 4 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Absolut 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 5 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Orloff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 6 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Eristoff 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 7 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Grey Goose 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+
+      <div class="categoria mb-4">
+        <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-latao')">
+          <img src="https://i.ibb.co/YNq59Sr/redbull.png" alt="Outros" style="height:40px; margin-right:15px;">
+          CERVEJA LATÃO 473ML
+        </button>
+        <div id="cat-latao" class="produtos-categoria mt-3" style="display: none;">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
+  <!-- Vodka 1 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Askov 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 2 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Polar 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 3 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Smirnoff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 4 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Absolut 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 5 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Orloff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 6 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Eristoff 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 7 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Grey Goose 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+
+      <div class="categoria mb-4">
+        <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-fardo')">
+          <img src="https://i.ibb.co/YNq59Sr/redbull.png" alt="Outros" style="height:40px; margin-right:15px;">
+          FARDO CERVEJA LATÃO 473ML (12 UNIDADES)
+        </button>
+        <div id="cat-fardo" class="produtos-categoria mt-3" style="display: none;">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
+  <!-- Vodka 1 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Askov 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 2 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Polar 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 3 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Smirnoff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 4 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Absolut 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 5 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Orloff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 6 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Eristoff 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 7 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Grey Goose 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+
+      <div class="categoria mb-4">
+        <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-garrafa')">
+          <img src="https://i.ibb.co/YNq59Sr/redbull.png" alt="Outros" style="height:40px; margin-right:15px;">
+          CERVEJA GARRAFA 600ML
+        </button>
+        <div id="cat-garrafa" class="produtos-categoria mt-3" style="display: none;">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
+  <!-- Vodka 1 -->
+  <div class="col">
+    <div class="card">
+    <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
+    <div class="card-body">
+      <h5 class="card-title">Vodka Askov 900ml</h5>
+      <p class="card-text">
+        Carregando preço...
+        <span class="status-text" style="color: red; display: none;">(esgotado)</span>
+      </p>
+      <div class="input-group mb-2">
+        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+        <input type="number" class="form-control text-center" value="0" min="0" />
+        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+      </div>
+      <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+  </div>
+
+  <!-- Vodka 2 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Polar 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 3 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Smirnoff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 4 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Absolut 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 5 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Orloff 900ml</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 6 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Eristoff 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vodka 7 -->
+  <div class="col">
+    <div class="card">
+      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
+      <div class="card-body">
+        <h5 class="card-title">Vodka Grey Goose 1L</h5>
+        <p class="card-text">Carregando preço...</p>
+        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <div class="input-group mb-2">
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+          <input type="number" class="form-control text-center" value="0" min="0" />
+          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+        </div>
+        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
         </div>
       </div>
     </div>
@@ -362,22 +1125,22 @@ function toggleCategoria(id) {
 
   </section>
 
-  <!-- Carrinho -->
-  <div id="carrinho" class="carrinho-lateral">
-    <div class="d-flex justify-content-between align-items-center mb-2">
-      <h5 class="mb-0">Carrinho</h5>
-      <button class="btn btn-sm btn-outline-secondary" onclick="minimizarCarrinho()">⬇️</button>
-    </div>
-    <div id="itens-carrinho" class="mb-3"></div>
-    <div class="fw-bold text-end me-2">Total: R$ <span id="total-geral">0,00</span></div>
-    <div class="text-center mt-3">
-      <button class="btn btn-success btn-sm" onclick="enviarPedido()">Enviar Pedido</button>
-    </div>
-  </div>
+        <!-- Carrinho -->
+        <div id="carrinho" class="carrinho-lateral carrinho-minimizado">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h5 class="mb-0">Carrinho</h5>
+          <button class="btn btn-sm btn-outline-secondary" onclick="minimizarCarrinho()">⬇️</button>
+        </div>
+        <div id="itens-carrinho" class="mb-3"></div>
+        <div class="fw-bold text-end me-2">Total: R$ <span id="total-geral">0,00</span></div>
+        <div class="text-center mt-3">
+          <button class="btn btn-success btn-sm" onclick="enviarPedido()">Enviar Pedido</button>
+        </div>
+      </div>
 
-  <button id="botao-expandir" class="btn btn-primary botao-expandir d-none" onclick="expandirCarrinho()">
-    🛒 Carrinho (<span id="total-carrinho">R$0,00</span>)
-  </button>
+      <button id="botao-expandir" class="btn btn-primary botao-expandir" onclick="expandirCarrinho()">
+        🛒 Carrinho (<span id="total-carrinho">R$0,00</span>)
+      </button>
 
   <script>
     const carrinho = [];
@@ -501,7 +1264,7 @@ function toggleCategoria(id) {
   <script>
   const sheetID = '1LzPCbEkzyfXOel2UEYDlcyIBFRlgdep9G3ENvui8cqU';
   const apiKey = 'AIzaSyA-OqANUQu2qfRGsyFlB60oZ7XdcbaaMpI'; // Substitua pela sua chave
-  const range = 'Página1!A2:C4';
+  const range = 'Página1!A2:C10';
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/${range}?key=${apiKey}`;
 
@@ -559,5 +1322,8 @@ function toggleCategoria(id) {
       });
     });
 </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
