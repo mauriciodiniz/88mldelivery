@@ -1420,6 +1420,58 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 </script>
 
+<!-- Banner de instalação -->
+<div id="install-banner" style="
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffc107;
+  color: #000;
+  padding: 12px;
+  text-align: center;
+  z-index: 1050;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+">
+  Instale o aplicativo <strong>88ml Delivery</strong>
+  <button id="btn-install-pwa" class="btn btn-dark btn-sm ms-2">Instalar</button>
+  <button id="btn-close-banner" class="btn btn-link btn-sm text-dark">✕</button>
+</div>
+
+<script>
+  let deferredPrompt;
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault(); // Impede o prompt automático
+    deferredPrompt = e;
+
+    // Mostra o banner
+    const banner = document.getElementById('install-banner');
+    banner.style.display = 'block';
+
+    // Botão de instalar
+    document.getElementById('btn-install-pwa').addEventListener('click', () => {
+      banner.style.display = 'none';
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then(choiceResult => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Usuário instalou o app');
+        } else {
+          console.log('Usuário recusou instalar');
+        }
+        deferredPrompt = null;
+      });
+    });
+
+    // Botão de fechar
+    document.getElementById('btn-close-banner').addEventListener('click', () => {
+      banner.style.display = 'none';
+    });
+  });
+</script>
+
 
 </body>
 </html>
