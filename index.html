@@ -12,6 +12,30 @@
 <link rel="icon" href="/favicon.png" type="image/png">
 
   <style>
+.barra-app {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  z-index: 10001;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-app {
+  flex: 1;
+  border: none;
+  background: none;
+  text-align: center;
+  padding: 8px 0;
+  font-size: 18px;
+  color: #333;
+}
+
+.btn-app:hover {
+  background-color: #f1f1f1;
+}
 
     .carrinho-overlay {
   position: fixed;
@@ -1175,15 +1199,72 @@ function toggleCategoria(id) {
   </div>
   <div id="itens-carrinho" class="mb-3"></div>
   <div class="fw-bold text-end me-2">Total: R$ <span id="total-geral">0,00</span></div>
-  <div class="text-center mt-3">
-    <button class="btn btn-success btn-sm" onclick="enviarPedido()">Enviar Pedido</button>
+
+<hr>
+
+<div class="mb-2">
+  <label class="fw-bold">Forma de pagamento:</label><br>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="pagamento" value="Dinheiro" id="pg-dinheiro" checked>
+    <label class="form-check-label" for="pg-dinheiro">Dinheiro</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="pagamento" value="Pix" id="pg-pix">
+    <label class="form-check-label" for="pg-pix">Pix</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="pagamento" value="Cartão" id="pg-cartao">
+    <label class="form-check-label" for="pg-cartao">Cartão</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="pagamento" value="Diversos" id="pg-diversos">
+    <label class="form-check-label" for="pg-diversos">Diversos</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="pagamento" value="Outro (ver observações)" id="pg-outro">
+    <label class="form-check-label" for="pg-outro">Outro (ver observações)</label>
   </div>
 </div>
 
+<div class="mb-2">
+  <label class="fw-bold">Local de entrega:</label><br>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="entrega" value="Na minha casa" id="entrega-casa" checked>
+    <label class="form-check-label" for="entrega-casa">Na minha casa</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="entrega" value="Outro (ver observações)" id="entrega-outro">
+    <label class="form-check-label" for="entrega-outro">Outro (ver observações)</label>
+  </div>
+</div>
 
-      <button id="botao-expandir" class="btn btn-primary botao-expandir" onclick="expandirCarrinho()">
+<div class="mb-3">
+  <label class="fw-bold" for="observacoes">Observações:</label>
+  <textarea id="observacoes" class="form-control" rows="2" placeholder="Ex: entrega no portão, troco para 50, etc."></textarea>
+</div>
+
+<div class="text-center">
+  <button class="btn btn-success btn-sm w-100" onclick="enviarPedido()">📤 Enviar Pedido</button>
+</div>
+
+</div>
+
+
+      <!-- Botão Desktop -->
+<button id="botao-expandir" class="btn btn-primary botao-expandir d-none d-md-block" onclick="expandirCarrinho()">
   🛒 Carrinho (<span id="total-carrinho">R$0,00</span>)
 </button>
+
+<!-- Botão Mobile -->
+<div class="barra-app d-flex d-md-none">
+  <button class="btn btn-app" onclick="irParaCatalogo()">
+    🏠<br><small>Catálogo</small>
+  </button>
+  <button class="btn btn-app" onclick="expandirCarrinho()">
+    🛒<br><small>Carrinho (<span id="total-carrinho-mobile">R$0,00</span>)</small>
+  </button>
+</div>
+
 
 
   <script>
@@ -1231,31 +1312,39 @@ function toggleCategoria(id) {
     }
 
     function atualizarCarrinho() {
-      const container = document.getElementById("itens-carrinho");
-      container.innerHTML = "";
-      let total = 0;
-      let totalItens = 0;
+  const container = document.getElementById("itens-carrinho");
+  container.innerHTML = "";
+  let total = 0;
+  let totalItens = 0;
 
-      carrinho.forEach((item, index) => {
-        const subtotal = item.quantidade * item.preco;
-        total += subtotal;
-        totalItens += item.quantidade;
+  carrinho.forEach((item, index) => {
+    const subtotal = item.quantidade * item.preco;
+    total += subtotal;
+    totalItens += item.quantidade;
 
-        container.innerHTML += `
-          <div class="item d-flex justify-content-between align-items-start">
-            <div>
-              ${item.nome}<br>
-              ${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = 
-              <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
-            </div>
-            <button class="btn btn-sm btn-outline-danger ms-2" onclick="removerItem(${index})">🗑️</button>
-          </div>
-        `;
-      });
+    container.innerHTML += `
+      <div class="item d-flex justify-content-between align-items-start">
+        <div>
+          ${item.nome}<br>
+          ${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = 
+          <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
+        </div>
+        <button class="btn btn-sm btn-outline-danger ms-2" onclick="removerItem(${index})">🗑️</button>
+      </div>
+    `;
+  });
 
-      document.getElementById("total-geral").innerText = total.toFixed(2).replace(".", ",");
-      document.getElementById("total-carrinho").innerText = `R$${total.toFixed(2).replace(".", ",")}`;
-    }
+  const totalFormatado = `R$${total.toFixed(2).replace(".", ",")}`;
+  document.getElementById("total-geral").innerText = totalFormatado;
+  document.getElementById("total-carrinho").innerText = totalFormatado;
+
+  // Atualiza o da barra mobile também
+  const totalCarrinhoMobile = document.getElementById("total-carrinho-mobile");
+  if (totalCarrinhoMobile) {
+    totalCarrinhoMobile.innerText = totalFormatado;
+  }
+}
+
 
     function expandirCarrinho() {
   const carrinho = document.getElementById("carrinho");
@@ -1300,24 +1389,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function enviarPedido() {
-      if (carrinho.length === 0) {
-        alert("O carrinho está vazio!");
-        return;
-      }
-      let mensagem = "*Pedido:*\n";
-      carrinho.forEach(item => {
-        const subtotal = item.quantidade * item.preco;
-        mensagem += `• ${item.nome} - ${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = R$ ${subtotal.toFixed(2).replace(".", ",")}\n`;
-      });
-      const total = carrinho.reduce((s, i) => s + i.quantidade * i.preco, 0);
-      mensagem += `\n*Total:* R$ ${total.toFixed(2).replace(".", ",")}`;
+  if (carrinho.length === 0) {
+    alert("O carrinho está vazio!");
+    return;
+  }
 
-      const texto = encodeURIComponent(mensagem);
-      const telefone = "5535999658021";
-      const link = `https://wa.me/${telefone}?text=${texto}`;
+  // Itens
+  let mensagem = "*Pedido:*\n";
+  carrinho.forEach(item => {
+    const subtotal = item.quantidade * item.preco;
+    mensagem += `• ${item.nome} - ${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = R$ ${subtotal.toFixed(2).replace(".", ",")}\n`;
+  });
 
-      window.open(link, "_blank");
-    }
+  const total = carrinho.reduce((s, i) => s + i.quantidade * i.preco, 0);
+  mensagem += `\n*Total:* R$ ${total.toFixed(2).replace(".", ",")}\n`;
+
+  // Forma de pagamento
+  const pagamentoSelecionado = document.querySelector('input[name="pagamento"]:checked')?.value;
+  mensagem += `*Forma de pagamento:* ${pagamentoSelecionado}\n`;
+
+  // Local de entrega
+  const entregaSelecionada = document.querySelector('input[name="entrega"]:checked')?.value;
+  mensagem += `*Local de entrega:* ${entregaSelecionada}\n`;
+
+  // Observações
+  const obs = document.getElementById("observacoes").value.trim();
+  if (obs !== "") {
+    mensagem += `*Observações:* ${obs}`;
+  }
+
+  // Envia para o WhatsApp
+  const texto = encodeURIComponent(mensagem);
+  const telefone = "5535999658021";
+  const link = `https://wa.me/${telefone}?text=${texto}`;
+
+  window.open(link, "_blank");
+}
+
 
     function alternarProdutos() {
   const produtos = document.querySelectorAll(".produto-longneck");
@@ -1472,6 +1580,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 </script>
 
+<script>
+
+  function irParaCatalogo() {
+  const secao = document.getElementById("catalogo");
+  if (secao) {
+    secao.scrollIntoView({ behavior: "smooth" });
+  } else {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}
+
+</script>
 
 </body>
 </html>
