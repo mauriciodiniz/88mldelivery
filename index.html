@@ -1399,8 +1399,8 @@ document.addEventListener("DOMContentLoaded", () => {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #ffc107;
-  color: #000;
+  background-color: #242424;
+  color: #fefefe;
   padding: 12px;
   text-align: center;
   z-index: 1050;
@@ -1408,7 +1408,10 @@ document.addEventListener("DOMContentLoaded", () => {
   box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 ">
   Instale o aplicativo <strong>88ml Delivery</strong>
-  <button id="btn-install-pwa" class="btn btn-dark btn-sm ms-2">Instalar</button>
+  <button id="btn-install-pwa" class="btn btn-sm ms-2" style="background-color: #FFC700; color: #000; border: none;">
+  Instalar
+</button>
+
   <button id="btn-close-banner" class="btn btn-link btn-sm text-dark">✕</button>
 </div>
 
@@ -1495,6 +1498,7 @@ document.getElementById("campo-busca").addEventListener("keydown", function (e) 
         }
       }
     });
+    this.blur(); // <- Fecha o teclado virtual
   }
 });
 </script>
