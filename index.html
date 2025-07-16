@@ -11,6 +11,10 @@
 
 <link rel="icon" href="/favicon.png" type="image/png">
 
+<!-- Adicione no <head> do seu HTML esta linha para importar a fonte -->
+<link href="https://fonts.googleapis.com/css2?family=Francois+One&display=swap" rel="stylesheet">
+
+
   <style>
 .barra-app {
   position: fixed;
@@ -169,21 +173,27 @@
 }
 
 
+
   </style>
 </head>
 <body>
- <!-- Navbar -->
-<nav class="navbar navbar-dark position-relative" style="height: 60px; background-color: #FFC700;">
-  <!-- Botão lateral esquerdo -->
-  <button id="botao-usuario" onclick="abrirMenuLateral()" class="btn btn-dark position-absolute start-0 top-50 translate-middle-y ms-2">
-    <img src="clientes.png" alt="Usuário" style="height: 28px;">
-  </button>
 
-  <!-- Logotipo centralizado -->
-  <a class="navbar-brand mx-auto d-flex align-items-center justify-content-center" href="#home">
-    <img src="https://i.ibb.co/xtJJhFPp/88ml-Delivery-Distribuidora.webp" alt="Logo" style="height: 40px;">
-  </a>
+ <!-- Navbar -->
+<nav class="navbar navbar-dark position-relative" style="height: 60px; background-color: #ffb700;">
+  <!-- Botão lateral esquerdo -->
+  <button id="botao-usuario" onclick="abrirMenuLateral()" 
+  class="btn d-flex align-items-center justify-content-center position-absolute start-0 top-50 translate-middle-y ms-2"
+  style="background-color: #FFC700; border: none; border-radius: 50%; width: 45px; height: 45px;">
+  <img src="clientes.png" alt="Usuário" style="height: 22px;">
+</button>
+
+
+  <!-- Texto centralizado -->
+  <div class="mx-auto position-absolute start-50 top-50 translate-middle text-center" style="font-family: 'Francois One', sans-serif; font-size: 1.5rem; color: #ffffff;">
+    88ML DELIVERY
+  </div>
 </nav>
+
 
 
 
@@ -233,9 +243,10 @@
   <!-- Catálogo -->
   <section id="catalogo" class="py-5 bg-light">
     <div class="container">
-      <h2 class="text-center mb-5">Catálogo</h2>
+      <h2 class="text-center mb-2">Catálogo</h2>
         
-      <div class="container my-4 d-flex align-items-center gap-2">
+      <div class="container my-2 d-flex align-items-center gap-2">
+        
   <input type="text" id="campo-busca" class="form-control" placeholder="🔍 Buscar produto...">
   <button id="limpar-busca" class="btn btn-outline-secondary" style="display: none;">❌</button>
 </div>
@@ -1535,6 +1546,30 @@ function restaurarCategorias() {
   }
 </script>
 
+<script>
+  let toqueInicialX_menu = 0;
+
+  function iniciarSwipeMenu(event) {
+    toqueInicialX_menu = event.touches[0].clientX;
+  }
+
+  function encerrarSwipeMenu(event) {
+    const toqueFinalX = event.changedTouches[0].clientX;
+    const diferencaX = toqueFinalX - toqueInicialX_menu;
+
+    if (diferencaX > 70) {
+      fecharMenuLateral(); // Função que você já deve ter para esconder o menu
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const menu = document.getElementById("menu-lateral");
+    if (menu) {
+      menu.addEventListener("touchstart", iniciarSwipeMenu);
+      menu.addEventListener("touchend", encerrarSwipeMenu);
+    }
+  });
+</script>
 
 
 </body>
