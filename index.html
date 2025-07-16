@@ -179,229 +179,12 @@
     <div class="container">
       <h2 class="text-center mb-5">Catálogo</h2>
         
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mb-4">
-          <div class="col-12 col-md-12 col-lg-12 mx-auto">
-            <div class="card ">
-              <img src="https://recursos.clubedomalte.com.br/i/_mainstream/populares_mob_.png" class="card-img-top cerv-tamanho" alt="Cerveja Brahma">
-              <div class="card-body ">
-                <h5 class="card-title text-center">CERVEJAS</h5>
-      <div class="categoria mb-4">
-  <button class="btn categoria-btn w-100 text-start d-flex align-items-center" type="button" onclick="toggleCategoria('cat-473ml')">
-    <img src="https://i.ibb.co/575H1cS/brahma.png" alt="Cerveja 473ml" style="height:40px; margin-right:15px;">
-    Cerveja 473ml (Latão)
-  </button>
-  <div id="cat-473ml" class="produtos-categoria mt-3" style="display: none;">
-    
-      
-      
-      <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center" id="produtos">
-        <!-- Exemplo de produto repetido (10 produtos, 5 visíveis inicialmente) -->
-
-        <div class="col produto-longneck visivel">
-  <div class="card">
-    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_880502-MLU77682290836_072024-F.webp" class="card-img-top cerv-tamanho" alt="Cerveja">
-    <div class="card-body">
-      <h5 class="card-title">Brahma 473ml</h5>
-      <p class="card-text">Carregando preço...</p>
-      <p class="status-text" style="color: red; display: none;">(esgotado)</p>
-      <div class="input-group mb-2">
-        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-        <input type="number" class="form-control text-center" value="0" min="0">
-        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-      </div>
-      <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
-    </div>
-  </div>
+      <div class="container my-4">
+  <input type="text" id="campo-busca" class="form-control" placeholder="🔍 Buscar produto...">
 </div>
-
-        <div class="col produto-longneck visivel">
-          <div class="card">
-            <img src="https://i.ibb.co/gZ9zHGBj/skol.webp" class="card-img-top cerv-tamanho" alt="Cerveja">
-            <div class="card-body">
-              <h5 class="card-title">Skol 473ml</h5>
-              <p class="card-text">R$ 4,75</p>
-              <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-                <input type="number" class="form-control text-center" value="0" min="0">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-              </div>
-              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col produto-longneck visivel">
-          <div class="card">
-            <img src="https://i.ibb.co/Hp7WmBGd/amstel.webp" class="card-img-top cerv-tamanho" alt="Cerveja">
-            <div class="card-body">
-              <h5 class="card-title">Amstel 473ml</h5>
-              <p class="card-text">R$ 4,85</p>
-              <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-                <input type="number" class="form-control text-center" value="0" min="0">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-              </div>
-              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col produto-longneck visivel">
-          <div class="card">
-            <img src="https://i.ibb.co/S4wkSfwY/heineken.png" class="card-img-top cerv-tamanho" alt="Cerveja">
-            <div class="card-body">
-              <h5 class="card-title">Heineken 473ml</h5>
-              <p class="card-text">R$ 6,49</p>
-              <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-                <input type="number" class="form-control text-center" value="0" min="0">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-              </div>
-              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col produto-longneck visivel">
-          <div class="card">
-            <img src="https://i.ibb.co/d9QJYhd/original.webp" class="card-img-top cerv-tamanho" alt="Cerveja">
-            <div class="card-body">
-              <h5 class="card-title">Original 473ml</h5>
-              <p class="card-text">R$ 5,29</p>
-              <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-                <input type="number" class="form-control text-center" value="0" min="0">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-              </div>
-              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-
-       <div class="col produto-longneck ">
-  <div class="card">
-    <img src="https://http2.mlstatic.com/D_NQ_NP_2X_880502-MLU77682290836_072024-F.webp" class="card-img-top cerv-tamanho alt="Cerveja">
-    <div class="card-body">
-      <h5 class="card-title">Budweiser</h5>
-      <p class="card-text">Carregando preço...</p>
-      <p class="status-text" style="color: red; display: none;">(esgotado)</p>
-      <div class="input-group mb-2">
-        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-        <input type="number" class="form-control text-center" value="0" min="0">
-        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-      </div>
-      <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
-    </div>
-  </div>
-</div>
-
-       <div class="col produto-longneck ">
-  <div class="card">
-    <img src="itaipava.webp" class="card-img-top cerv-tamanho alt="Cerveja">
-    <div class="card-body">
-      <h5 class="card-title">Itaipava</h5>
-      <p class="card-text">Carregando preço...</p>
-      <p class="status-text" style="color: red; display: none;">(esgotado)</p>
-      <div class="input-group mb-2">
-        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-        <input type="number" class="form-control text-center" value="0" min="0">
-        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-      </div>
-      <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
-    </div>
-  </div>
-</div>
-        <div class="col produto-longneck ">
-          <div class="card">
-            <img src="cerveja.jpg" class="card-img-top" alt="Cerveja">
-            <div class="card-body">
-              <h5 class="card-title">Cerveja 1</h5>
-              <p class="card-text">R$ 7,90</p>
-              <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-                <input type="number" class="form-control text-center" value="0" min="0">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-              </div>
-              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col produto-longneck ">
-          <div class="card">
-            <img src="cerveja.jpg" class="card-img-top" alt="Cerveja">
-            <div class="card-body">
-              <h5 class="card-title">Cerveja 1</h5>
-              <p class="card-text">R$ 7,90</p>
-              <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-                <input type="number" class="form-control text-center" value="0" min="0">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-              </div>
-              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col produto-longneck ">
-          <div class="card">
-            <img src="cerveja.jpg" class="card-img-top" alt="Cerveja">
-            <div class="card-body">
-              <h5 class="card-title">Cerveja 1</h5>
-              <p class="card-text">R$ 7,90</p>
-              <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-                <input type="number" class="form-control text-center" value="0" min="0">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-              </div>
-              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col produto-longneck ">
-          <div class="card">
-            <img src="cerveja.jpg" class="card-img-top" alt="Cerveja">
-            <div class="card-body">
-              <h5 class="card-title">Cerveja 1</h5>
-              <p class="card-text">R$ 7,90</p>
-              <div class="input-group mb-2">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-                <input type="number" class="form-control text-center" value="0" min="0">
-                <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
-              </div>
-              <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
-            </div>
-          </div>
-        </div>
-        <!-- Repita os blocos acima para criar até 10 produtos com a mesma classe 'produto-longneck' -->
-        <!-- Apenas os 5 primeiros devem ter a classe 'visivel' -->
-      
-      
-    
-    </div>
-      <div class="text-center mt-4">
-        <button class="btn btn-outline-primary" id="btnVerMais" onclick="alternarProdutos()">Ver mais produtos</button>
-      </div>
-      
-    </div>
-
         
-    </div>
-         </div>
-    </div>
-  </div>
-
-    
-          
-    
-      
-      
-      <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center" id="produtos">
-</div>
-          </div>
-
             <!-- CATEGORIA VODKA -->
+             <div class="categoria-container">
   <div class="card mt-4">
     <img src="https://i.ibb.co/6XtR7br/vodka.png" class="card-img-top cerv-tamanho" alt="Vodka">
     <div class="card-body">
@@ -413,7 +196,7 @@
         </button>
         <div id="cat-vodka" class="produtos-categoria mt-3" style="display: none;">
           <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
-            <div class="col">
+            <div class="col produto">
               <div class="card">
                 <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
                 <div class="card-body">
@@ -433,8 +216,10 @@
       </div>
     </div>
   </div>
+             </div>
 
   <!-- CATEGORIA WHISKY -->
+   <div class="categoria-container">
   <div class="card mt-4">
     <img src="https://i.ibb.co/5kJ6z7h/whisky.png" class="card-img-top cerv-tamanho" alt="Whisky">
     <div class="card-body">
@@ -446,9 +231,9 @@
         </button>
         <div id="cat-whisky" class="produtos-categoria mt-3" style="display: none;">
           <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
-            <div class="col">
+            <div class="col produto">
               <div class="card">
-                <img src="https://i.ibb.co/ZTVQ3BL/redlabel.png" class="card-img-top cerv-tamanho" alt="Whisky Red Label">
+                <img src="red-label.webp" class="card-img-top cerv-tamanho" alt="Whisky Red Label">
                 <div class="card-body">
                   <h5 class="card-title">Red Label 1L</h5>
                   <p class="card-text">R$ 79,90</p>
@@ -466,8 +251,10 @@
       </div>
     </div>
   </div>
+   </div>
 
   <!-- CATEGORIA OUTROS -->
+   <div class="categoria-container">
   <div class="card mt-4">
     <img src="https://i.ibb.co/w07LTZF/energeticos.png" class="card-img-top cerv-tamanho" alt="Outros Produtos">
     <div class="card-body">
@@ -480,7 +267,7 @@
         <div id="cat-longneck" class="produtos-categoria mt-3" style="display: none;">
           <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
   <!-- Vodka 1 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
       <div class="card-body">
@@ -498,7 +285,7 @@
   </div>
 
   <!-- Vodka 2 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
       <div class="card-body">
@@ -516,7 +303,7 @@
   </div>
 
   <!-- Vodka 3 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
       <div class="card-body">
@@ -534,7 +321,7 @@
   </div>
 
   <!-- Vodka 4 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
       <div class="card-body">
@@ -552,7 +339,7 @@
   </div>
 
   <!-- Vodka 5 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
       <div class="card-body">
@@ -570,7 +357,7 @@
   </div>
 
   <!-- Vodka 6 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
       <div class="card-body">
@@ -588,7 +375,7 @@
   </div>
 
   <!-- Vodka 7 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
       <div class="card-body">
@@ -617,7 +404,7 @@
         <div id="cat-longneckzero" class="produtos-categoria mt-3" style="display: none;">
           <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
   <!-- Vodka 1 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
       <div class="card-body">
@@ -635,7 +422,7 @@
   </div>
 
   <!-- Vodka 2 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
       <div class="card-body">
@@ -653,7 +440,7 @@
   </div>
 
   <!-- Vodka 3 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
       <div class="card-body">
@@ -671,7 +458,7 @@
   </div>
 
   <!-- Vodka 4 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
       <div class="card-body">
@@ -689,7 +476,7 @@
   </div>
 
   <!-- Vodka 5 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
       <div class="card-body">
@@ -707,7 +494,7 @@
   </div>
 
   <!-- Vodka 6 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
       <div class="card-body">
@@ -725,7 +512,7 @@
   </div>
 
   <!-- Vodka 7 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
       <div class="card-body">
@@ -755,7 +542,7 @@
         <div id="cat-latao" class="produtos-categoria mt-3" style="display: none;">
           <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
   <!-- Vodka 1 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
       <div class="card-body">
@@ -773,7 +560,7 @@
   </div>
 
   <!-- Vodka 2 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
       <div class="card-body">
@@ -791,7 +578,7 @@
   </div>
 
   <!-- Vodka 3 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
       <div class="card-body">
@@ -809,7 +596,7 @@
   </div>
 
   <!-- Vodka 4 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
       <div class="card-body">
@@ -827,7 +614,7 @@
   </div>
 
   <!-- Vodka 5 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
       <div class="card-body">
@@ -845,7 +632,7 @@
   </div>
 
   <!-- Vodka 6 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
       <div class="card-body">
@@ -863,7 +650,7 @@
   </div>
 
   <!-- Vodka 7 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
       <div class="card-body">
@@ -893,7 +680,7 @@
         <div id="cat-fardo" class="produtos-categoria mt-3" style="display: none;">
           <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
   <!-- Vodka 1 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
       <div class="card-body">
@@ -911,7 +698,7 @@
   </div>
 
   <!-- Vodka 2 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
       <div class="card-body">
@@ -929,7 +716,7 @@
   </div>
 
   <!-- Vodka 3 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
       <div class="card-body">
@@ -947,7 +734,7 @@
   </div>
 
   <!-- Vodka 4 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
       <div class="card-body">
@@ -965,7 +752,7 @@
   </div>
 
   <!-- Vodka 5 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
       <div class="card-body">
@@ -983,7 +770,7 @@
   </div>
 
   <!-- Vodka 6 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
       <div class="card-body">
@@ -1001,7 +788,7 @@
   </div>
 
   <!-- Vodka 7 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
       <div class="card-body">
@@ -1031,7 +818,7 @@
         <div id="cat-garrafa" class="produtos-categoria mt-3" style="display: none;">
           <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
   <!-- Vodka 1 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
     <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
     <div class="card-body">
@@ -1051,7 +838,7 @@
   </div>
 
   <!-- Vodka 2 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
       <div class="card-body">
@@ -1069,7 +856,7 @@
   </div>
 
   <!-- Vodka 3 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
       <div class="card-body">
@@ -1087,7 +874,7 @@
   </div>
 
   <!-- Vodka 4 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
       <div class="card-body">
@@ -1105,7 +892,7 @@
   </div>
 
   <!-- Vodka 5 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
       <div class="card-body">
@@ -1123,7 +910,7 @@
   </div>
 
   <!-- Vodka 6 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
       <div class="card-body">
@@ -1141,7 +928,7 @@
   </div>
 
   <!-- Vodka 7 -->
-  <div class="col">
+  <div class="col produto">
     <div class="card">
       <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
       <div class="card-body">
@@ -1164,6 +951,7 @@
 
     </div>
   </div>
+   </div>
 
 
 
@@ -1394,31 +1182,35 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Itens
-  let mensagem = "*Pedido:*\n";
+  // Coleta forma de pagamento, local e observações
+  const formaPagamento = document.querySelector('input[name="pagamento"]:checked')?.value || "";
+  const localEntrega = document.querySelector('input[name="entrega"]:checked')?.value || "";
+  const observacoes = document.getElementById("observacoes")?.value || "";
+
+  let mensagem = "*88ML DELIVERY*\n";
+  mensagem += "‐----------------------------------------------------\n";
+  mensagem += "*Pedido:*\n";
+
   carrinho.forEach(item => {
     const subtotal = item.quantidade * item.preco;
-    mensagem += `• ${item.nome} - ${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = R$ ${subtotal.toFixed(2).replace(".", ",")}\n`;
+    mensagem += `* ${item.nome}\n${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = R$ ${subtotal.toFixed(2).replace(".", ",")}\n\n`;
   });
 
   const total = carrinho.reduce((s, i) => s + i.quantidade * i.preco, 0);
-  mensagem += `\n*Total:* R$ ${total.toFixed(2).replace(".", ",")}\n`;
+  mensagem += `*Total:* R$ ${total.toFixed(2).replace(".", ",")}\n`;
+  mensagem += "‐----------------------------------------------------\n";
+  mensagem += `*Forma de pagamento:* ${formaPagamento}\n`;
+  mensagem += "‐----------------------------------------------------\n";
+  mensagem += `*Local de entrega:* ${localEntrega}\n`;
 
-  // Forma de pagamento
-  const pagamentoSelecionado = document.querySelector('input[name="pagamento"]:checked')?.value;
-  mensagem += `*Forma de pagamento:* ${pagamentoSelecionado}\n`;
-
-  // Local de entrega
-  const entregaSelecionada = document.querySelector('input[name="entrega"]:checked')?.value;
-  mensagem += `*Local de entrega:* ${entregaSelecionada}\n`;
-
-  // Observações
-  const obs = document.getElementById("observacoes").value.trim();
-  if (obs !== "") {
-    mensagem += `*Observações:* ${obs}`;
+  if (observacoes.trim() !== "") {
+    mensagem += "‐----------------------------------------------------\n";
+    mensagem += `*Observações:* ${observacoes.trim()}\n`;
   }
 
-  // Envia para o WhatsApp
+  mensagem += "‐----------------------------------------------------\n";
+  mensagem += "Pedido feito pelo\n*88ml Delivery App*";
+
   const texto = encodeURIComponent(mensagem);
   const telefone = "5535999658021";
   const link = `https://wa.me/${telefone}?text=${texto}`;
@@ -1592,6 +1384,44 @@ document.addEventListener("DOMContentLoaded", () => {
 }
 
 </script>
+
+<script>
+document.getElementById("campo-busca").addEventListener("input", function () {
+  const termo = this.value.toLowerCase();
+  const produtos = document.querySelectorAll(".produto");
+  const categorias = document.querySelectorAll(".categoria-container");
+
+  categorias.forEach(cat => {
+    let temProdutoVisivel = false;
+
+    // Fecha todas as categorias inicialmente
+    const divCategoria = cat.querySelector(".produtos-categoria");
+    if (divCategoria) {
+      divCategoria.style.display = "none";
+    }
+
+    const produtosDaCategoria = cat.querySelectorAll(".produto");
+    produtosDaCategoria.forEach(prod => {
+      const titulo = prod.querySelector(".card-title").textContent.toLowerCase();
+      const corresponde = titulo.includes(termo);
+      prod.style.display = corresponde ? "block" : "none";
+      if (corresponde) temProdutoVisivel = true;
+    });
+
+    // Se tiver produto visível, mostra a categoria e expande
+    if (temProdutoVisivel) {
+      cat.style.display = "block";
+      if (divCategoria) {
+        divCategoria.style.display = "block"; // ← Expande a categoria
+      }
+    } else {
+      cat.style.display = "none";
+    }
+  });
+});
+
+</script>
+
 
 </body>
 </html>
