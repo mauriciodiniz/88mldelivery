@@ -136,28 +136,84 @@
   background-color: #fab403;
   color: rgb(45, 45, 45);
 }
+
+.btn-app img {
+  margin-bottom: 4px;
+}
+
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: -320px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  z-index: 1100;
+  transition: left 0.3s ease;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+}
+
+.menu-lateral.aberto {
+  left: 0;
+}
+
+.overlay-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  display: none;
+  z-index: 1090;
+}
+
+
   </style>
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="#home">  
-  <img src="https://i.ibb.co/xtJJhFPp/88ml-Delivery-Distribuidora.webp" alt="Logo" style="height:40px; margin-right:10px;">88ml Delivery - Distribuidora de Bebidas
-</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#catalogo">Catálogo</a></li>
-          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Nós</a></li>
-          <li class="nav-item"><a class="nav-link" href="#parceiro">Seja Parceiro</a></li>
-        </ul>
+ <!-- Navbar -->
+<nav class="navbar navbar-dark position-relative" style="height: 60px; background-color: #FFC700;">
+  <!-- Botão lateral esquerdo -->
+  <button id="botao-usuario" onclick="abrirMenuLateral()" class="btn btn-dark position-absolute start-0 top-50 translate-middle-y ms-2">
+    <img src="clientes.png" alt="Usuário" style="height: 28px;">
+  </button>
+
+  <!-- Logotipo centralizado -->
+  <a class="navbar-brand mx-auto d-flex align-items-center justify-content-center" href="#home">
+    <img src="https://i.ibb.co/xtJJhFPp/88ml-Delivery-Distribuidora.webp" alt="Logo" style="height: 40px;">
+  </a>
+</nav>
+
+
+
+  
+
+<!-- Overlay para fechar o menu -->
+<div id="overlay-menu" class="overlay-menu" onclick="fecharMenuLateral()"></div>
+
+<!-- Menu lateral esquerdo -->
+<div id="menu-lateral" class="menu-lateral">
+  <div class="p-3">
+    <h5 class="mb-3">Bem-vindo!</h5>
+    <form id="form-login">
+      <div class="mb-2">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" id="nome" class="form-control" placeholder="Seu nome">
       </div>
-    </div>
-  </nav>
+      <div class="mb-2">
+        <label for="senha" class="form-label">Senha</label>
+        <input type="password" id="senha" class="form-control" placeholder="Senha">
+      </div>
+      <div class="mb-3">
+        <label for="confirmar" class="form-label">Confirmar senha</label>
+        <input type="password" id="confirmar" class="form-control" placeholder="Confirme a senha">
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Cadastrar/Login</button>
+    </form>
+  </div>
+</div>
+
 
   <!-- Carrossel -->
   <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -179,9 +235,11 @@
     <div class="container">
       <h2 class="text-center mb-5">Catálogo</h2>
         
-      <div class="container my-4">
+      <div class="container my-4 d-flex align-items-center gap-2">
   <input type="text" id="campo-busca" class="form-control" placeholder="🔍 Buscar produto...">
+  <button id="limpar-busca" class="btn btn-outline-secondary" style="display: none;">❌</button>
 </div>
+
         
             <!-- CATEGORIA VODKA -->
              <div class="categoria-container">
@@ -1045,13 +1103,16 @@ function toggleCategoria(id) {
 
 <!-- Botão Mobile -->
 <div class="barra-app d-flex d-md-none">
-  <button class="btn btn-app" onclick="irParaCatalogo()">
-    🏠<br><small>Catálogo</small>
+  <button class="btn btn-app d-flex flex-column align-items-center" onclick="irParaCatalogo()">
+    <img src="icone-lista.png" alt="Catálogo" style="height: 24px;">
+    <small>Catálogo</small>
   </button>
-  <button class="btn btn-app" onclick="expandirCarrinho()">
-    🛒<br><small>Carrinho (<span id="total-carrinho-mobile">R$0,00</span>)</small>
+  <button class="btn btn-app d-flex flex-column align-items-center" onclick="expandirCarrinho()">
+    <img src="icone-carrinho.png" alt="Carrinho" style="height: 24px;">
+    <small>Carrinho (<span id="total-carrinho-mobile">R$0,00</span>)</small>
   </button>
 </div>
+
 
 
 
@@ -1386,15 +1447,69 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 <script>
-document.getElementById("campo-busca").addEventListener("input", function () {
-  const termo = this.value.toLowerCase();
-  const produtos = document.querySelectorAll(".produto");
+document.getElementById("campo-busca").addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    e.preventDefault(); // Impede o envio de formulário, se houver
+    const termo = this.value.toLowerCase().trim();
+    const produtos = document.querySelectorAll(".produto");
+    const categorias = document.querySelectorAll(".categoria-container");
+
+    categorias.forEach(cat => {
+      const divCategoria = cat.querySelector(".produtos-categoria");
+      const produtosDaCategoria = cat.querySelectorAll(".produto");
+
+      if (termo === "") {
+        // Campo de busca vazio: mostra tudo, mas categorias colapsadas
+        cat.style.display = "block";
+        if (divCategoria) divCategoria.style.display = "none";
+        produtosDaCategoria.forEach(prod => {
+          prod.style.display = "block";
+        });
+      } else {
+        // Filtra normalmente
+        let temProdutoVisivel = false;
+
+        produtosDaCategoria.forEach(prod => {
+          const titulo = prod.querySelector(".card-title").textContent.toLowerCase();
+          const corresponde = titulo.includes(termo);
+          prod.style.display = corresponde ? "block" : "none";
+          if (corresponde) temProdutoVisivel = true;
+        });
+
+        if (temProdutoVisivel) {
+          cat.style.display = "block";
+          if (divCategoria) divCategoria.style.display = "block";
+        } else {
+          cat.style.display = "none";
+        }
+      }
+    });
+  }
+});
+</script>
+
+<script>
+const campoBusca = document.getElementById("campo-busca");
+const botaoLimpar = document.getElementById("limpar-busca");
+
+// Mostrar ou esconder o botão "❌" conforme o conteúdo do input
+campoBusca.addEventListener("input", () => {
+  botaoLimpar.style.display = campoBusca.value.trim() ? "inline-block" : "none";
+});
+
+// Ação de limpar busca
+botaoLimpar.addEventListener("click", () => {
+  campoBusca.value = "";
+  botaoLimpar.style.display = "none";
+  restaurarCategorias();
+});
+
+// Função auxiliar para restaurar todas as categorias colapsadas
+function restaurarCategorias() {
   const categorias = document.querySelectorAll(".categoria-container");
 
   categorias.forEach(cat => {
-    let temProdutoVisivel = false;
-
-    // Fecha todas as categorias inicialmente
+    cat.style.display = "block";
     const divCategoria = cat.querySelector(".produtos-categoria");
     if (divCategoria) {
       divCategoria.style.display = "none";
@@ -1402,25 +1517,24 @@ document.getElementById("campo-busca").addEventListener("input", function () {
 
     const produtosDaCategoria = cat.querySelectorAll(".produto");
     produtosDaCategoria.forEach(prod => {
-      const titulo = prod.querySelector(".card-title").textContent.toLowerCase();
-      const corresponde = titulo.includes(termo);
-      prod.style.display = corresponde ? "block" : "none";
-      if (corresponde) temProdutoVisivel = true;
+      prod.style.display = "block";
     });
-
-    // Se tiver produto visível, mostra a categoria e expande
-    if (temProdutoVisivel) {
-      cat.style.display = "block";
-      if (divCategoria) {
-        divCategoria.style.display = "block"; // ← Expande a categoria
-      }
-    } else {
-      cat.style.display = "none";
-    }
   });
-});
-
+}
 </script>
+
+<script>
+  function abrirMenuLateral() {
+    document.getElementById('menu-lateral').classList.add('aberto');
+    document.getElementById('overlay-menu').style.display = 'block';
+  }
+
+  function fecharMenuLateral() {
+    document.getElementById('menu-lateral').classList.remove('aberto');
+    document.getElementById('overlay-menu').style.display = 'none';
+  }
+</script>
+
 
 
 </body>
