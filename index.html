@@ -248,8 +248,18 @@
       <div class="container my-2 d-flex align-items-center gap-2">
         
   <input type="text" id="campo-busca" class="form-control" placeholder="🔍 Buscar produto...">
-  <button id="limpar-busca" class="btn btn-outline-secondary" style="display: none;">❌</button>
+  <button id="limpar-busca" class="btn btn-outline-secondary" style="display: none;">Limpar</button>
 </div>
+
+<!-- Área de resultados de busca -->
+<div id="area-resultado" style="display: none;">
+  <div class="d-flex justify-content-between align-items-center my-3">
+    <h4 class="mb-0">🔎 Resultados encontrados</h4>
+    <button id="voltar-catalogo" class="btn btn-warning btn-sm">Voltar ao Catálogo</button>
+  </div>
+  <div id="resultado-busca" class="row row-cols-1 row-cols-md-3 g-4"></div>
+</div>
+
 
         
             <!-- CATEGORIA VODKA -->
@@ -1382,7 +1392,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     </script>
 
-        <<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+        <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
   OneSignalDeferred.push(async function(OneSignal) {
@@ -1416,23 +1426,25 @@ document.addEventListener("DOMContentLoaded", () => {
 </div>
 
 <script>
+  
   let deferredPrompt;
 
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault(); // Impede o prompt automático
     deferredPrompt = e;
 
-    // Mostra o banner
+    // Exibe o banner
     const banner = document.getElementById('install-banner');
     banner.style.display = 'block';
 
-    // Botão de instalar
+    // Botão "Instalar"
     document.getElementById('btn-install-pwa').addEventListener('click', () => {
       banner.style.display = 'none';
       deferredPrompt.prompt();
+
       deferredPrompt.userChoice.then(choiceResult => {
         if (choiceResult.outcome === 'accepted') {
-          console.log('Usuário instalou o app');
+          console.log('Usuário aceitou instalar');
         } else {
           console.log('Usuário recusou instalar');
         }
@@ -1440,12 +1452,14 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Botão de fechar
+    // Botão "✕" apenas esconde o banner temporariamente
     document.getElementById('btn-close-banner').addEventListener('click', () => {
       banner.style.display = 'none';
     });
   });
+
 </script>
+
 
 <script>
 
@@ -1460,48 +1474,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </script>
 
-<script>
-document.getElementById("campo-busca").addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    e.preventDefault(); // Impede o envio de formulário, se houver
-    const termo = this.value.toLowerCase().trim();
-    const produtos = document.querySelectorAll(".produto");
-    const categorias = document.querySelectorAll(".categoria-container");
 
-    categorias.forEach(cat => {
-      const divCategoria = cat.querySelector(".produtos-categoria");
-      const produtosDaCategoria = cat.querySelectorAll(".produto");
 
-      if (termo === "") {
-        // Campo de busca vazio: mostra tudo, mas categorias colapsadas
-        cat.style.display = "block";
-        if (divCategoria) divCategoria.style.display = "none";
-        produtosDaCategoria.forEach(prod => {
-          prod.style.display = "block";
-        });
-      } else {
-        // Filtra normalmente
-        let temProdutoVisivel = false;
-
-        produtosDaCategoria.forEach(prod => {
-          const titulo = prod.querySelector(".card-title").textContent.toLowerCase();
-          const corresponde = titulo.includes(termo);
-          prod.style.display = corresponde ? "block" : "none";
-          if (corresponde) temProdutoVisivel = true;
-        });
-
-        if (temProdutoVisivel) {
-          cat.style.display = "block";
-          if (divCategoria) divCategoria.style.display = "block";
-        } else {
-          cat.style.display = "none";
-        }
-      }
-    });
-    this.blur(); // <- Fecha o teclado virtual
-  }
-});
-</script>
 
 <script>
 const campoBusca = document.getElementById("campo-busca");
@@ -1573,6 +1547,140 @@ function restaurarCategorias() {
       menu.addEventListener("touchend", encerrarSwipeMenu);
     }
   });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const campoBusca = document.getElementById("campo-busca");
+  const areaResultado = document.getElementById("area-resultado");
+  const resultadoBusca = document.getElementById("resultado-busca");
+  const voltarCatalogoBtn = document.getElementById("voltar-catalogo");
+
+  campoBusca.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const termo = this.value.toLowerCase().trim();
+      const categorias = document.querySelectorAll(".categoria-container");
+
+      resultadoBusca.innerHTML = "";
+
+      if (termo === "") {
+        categorias.forEach(cat => cat.style.display = "block");
+        areaResultado.style.display = "none";
+      } else {
+        categorias.forEach(cat => {
+          const produtos = cat.querySelectorAll(".produto");
+          cat.style.display = "none";
+
+          produtos.forEach(prod => {
+            const titulo = prod.querySelector(".card-title").textContent.toLowerCase();
+            if (titulo.includes(termo)) {
+              const nome = prod.querySelector(".card-title").textContent.trim();
+              const precoTexto = prod.querySelector(".card-text").textContent.replace("R$", "").trim();
+              const preco = parseFloat(precoTexto.replace(",", "."));
+              const precoFormatado = "R$ " + preco.toFixed(2).replace(".", ",");
+              const status = prod.querySelector(".status-text")?.style.display === "block" ? "esgotado" : "disponivel";
+              const img = prod.querySelector("img")?.src || "";
+
+              // Criação do card com template literals
+              const card = document.createElement("div");
+              card.className = "col produto mb-4";
+
+              card.innerHTML = `
+                <div class="card">
+                  <img src="${img}" class="card-img-top cerv-tamanho" alt="${nome}">
+                  <div class="card-body">
+                    <h5 class="card-title">${nome}</h5>
+                    <p class="card-text">${precoFormatado}</p>
+                    <p class="status-text" style="display: ${status === 'esgotado' ? 'block' : 'none'}; color: red;">(esgotado)</p>
+                    <div class="input-group mb-2">
+                      <button class="btn btn-outline-secondary btn-menor">-</button>
+                      <input type="number" class="form-control text-center" value="0" min="0" />
+                      <button class="btn btn-outline-secondary btn-maior">+</button>
+                    </div>
+                    <button class="btn ${status === 'esgotado' ? 'btn-secondary' : 'btn-primary'} w-100 btn-comprar" ${status === 'esgotado' ? 'disabled' : ''}>
+                      ${status === 'esgotado' ? 'Esgotado' : 'Adicionar ao Carrinho'}
+                    </button>
+                  </div>
+                </div>
+              `;
+
+              resultadoBusca.appendChild(card);
+
+              // Ativa botões do produto recém criado
+              const input = card.querySelector("input");
+              const btnMenos = card.querySelector(".btn-menor");
+              const btnMais = card.querySelector(".btn-maior");
+              const btnComprar = card.querySelector(".btn-comprar");
+
+              btnMenos?.addEventListener("click", () => {
+                let valor = parseInt(input.value, 10);
+                if (valor > 0) input.value = valor - 1;
+              });
+
+              btnMais?.addEventListener("click", () => {
+                let valor = parseInt(input.value, 10);
+                input.value = valor + 1;
+              });
+
+              btnComprar?.addEventListener("click", () => {
+                const quantidade = parseInt(input.value, 10);
+                if (quantidade > 0) {
+                  adicionarAoCarrinho(nome, quantidade, preco);
+                  atualizarCarrinho();
+                  input.value = 0;
+                }
+              });
+            }
+          });
+        });
+
+        areaResultado.style.display = "block";
+      }
+
+      this.blur(); // Fecha teclado virtual
+    }
+  });
+
+  voltarCatalogoBtn.addEventListener("click", function () {
+    const categorias = document.querySelectorAll(".categoria-container");
+
+    categorias.forEach(cat => {
+      cat.style.display = "block";
+      const divCategoria = cat.querySelector(".produtos-categoria");
+      if (divCategoria) divCategoria.style.display = "none";
+    });
+
+    areaResultado.style.display = "none";
+    campoBusca.value = "";
+  });
+});
+</script>
+
+
+
+<script>
+function atualizarTotalCarrinho() {
+  const itens = document.querySelectorAll("#itens-carrinho .item");
+  let total = 0;
+
+  itens.forEach(item => {
+    const texto = item.textContent;
+    const regex = /(\d+)\s+×\s+R\$ ([\d.,]+)/;
+    const match = texto.match(regex);
+
+    if (match) {
+      const quantidade = parseInt(match[1]);
+      const precoUnitario = parseFloat(match[2].replace(",", "."));
+      total += quantidade * precoUnitario;
+    }
+  });
+
+  const totalFormatado = `R$ ${total.toFixed(2).replace(".", ",")}`;
+  document.getElementById("total-carrinho").textContent = totalFormatado;
+  const totalMobile = document.getElementById("total-carrinho-mobile");
+  if (totalMobile) totalMobile.textContent = totalFormatado;
+}
 </script>
 
 
