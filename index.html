@@ -64,7 +64,7 @@
   width: 320px;
   height: 100%;
   background-color: white;
-  z-index: 2001;
+  z-index: 9999;
   padding: 1rem;
   box-shadow: -2px 0 5px rgba(0,0,0,0.2);
 }
@@ -93,8 +93,21 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      z-index: 10000;
-    }
+      z-index: 9990;
+      background-color: #ffb700 !important;
+  color: #fff !important;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  height: 48px;
+  transition: background 0.2s;
+}
+.botao-expandir:hover,
+.botao-expandir:focus {
+  background-color: #e6a600 !important;
+  color: #fff !important;
+}
+    
     .produto-longneck {
       display: none;
     }
@@ -172,6 +185,34 @@
   z-index: 1090;
 }
 
+.btn-enviar-pedido {
+  background-color: #ffb700;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  height: 48px;
+  transition: background 0.2s;
+}
+.btn-enviar-pedido:hover,
+.btn-enviar-pedido:focus {
+  background-color: #e6a600;
+  color: #fff;
+}
+
+.btn-adicionar-carrinho {
+  background-color: #ffb700 !important;
+  color: #fff !important;
+  border: none;
+  /* font-weight: bold;*/
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+.btn-adicionar-carrinho:hover,
+.btn-adicionar-carrinho:focus {
+  background-color: #e6a600 !important;
+  color: #fff !important;
+}
 
 
   </style>
@@ -192,7 +233,17 @@
   <div class="mx-auto position-absolute start-50 top-50 translate-middle text-center" style="font-family: 'Francois One', sans-serif; font-size: 1.5rem; color: #ffffff;">
     88ML DELIVERY
   </div>
+
+  <!-- Ícone de notificação alinhado à direita -->
+  <div id="icone-notificacao" class="position-absolute end-0 top-50 translate-middle-y me-3" onclick="abrirNotificacoes()">
+    <img src="sino.png" alt="Notificações" style="height: 24px; cursor: pointer;">
+    <span id="contador-notificacoes" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">
+      0
+    </span>
+  </div>
+
 </nav>
+
 
 
 
@@ -286,7 +337,7 @@
                     <input type="number" class="form-control text-center" value="0" min="0">
                     <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
                   </div>
-                  <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+                  <button class="btn btn-adicionar-carrinho w-100">Adicionar ao Carrinho</button>
                 </div>
               </div>
             </div>
@@ -321,7 +372,7 @@
                     <input type="number" class="form-control text-center" value="0" min="0">
                     <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
                   </div>
-                  <button class="btn btn-primary w-100">Adicionar ao Carrinho</button>
+                  <button class="btn btn-adicionar-carrinho w-100">Adicionar ao Carrinho</button>
                 </div>
               </div>
             </div>
@@ -348,17 +399,19 @@
   <!-- Vodka 1 -->
   <div class="col produto">
     <div class="card">
-      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
+      <img src="budweiser.jpeg" class="card-img-top cerv-tamanho" alt="Vodka Askov">
       <div class="card-body">
-        <h5 class="card-title">Vodka Askov 900ml</h5>
-        <p class="card-text">Carregando preço...</p>
-        <p class="status-text" style="color: red; display: none;">(esgotado)</p>
+        <h5 class="card-title">Budweiser</h5>
+        <p>
+           <span class="card-text">Carregando preço...</span>
+           <span class="status-text" style="color: red; display: none;">(esgotado)</span>
+        </p>
         <div class="input-group mb-2">
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -366,9 +419,9 @@
   <!-- Vodka 2 -->
   <div class="col produto">
     <div class="card">
-      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
+      <img src="corona.jpeg" class="card-img-top cerv-tamanho" alt="Vodka Example 2">
       <div class="card-body">
-        <h5 class="card-title">Vodka Polar 1L</h5>
+        <h5 class="card-title">Corona</h5>
         <p class="card-text">Carregando preço...</p>
         <p class="status-text" style="color: red; display: none;">(esgotado)</p>
         <div class="input-group mb-2">
@@ -376,7 +429,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -384,9 +437,9 @@
   <!-- Vodka 3 -->
   <div class="col produto">
     <div class="card">
-      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
+      <img src="eisenbahn.webp" class="card-img-top cerv-tamanho" alt="Vodka Example 3">
       <div class="card-body">
-        <h5 class="card-title">Vodka Smirnoff 900ml</h5>
+        <h5 class="card-title">Eisenbahn</h5>
         <p class="card-text">Carregando preço...</p>
         <p class="status-text" style="color: red; display: none;">(esgotado)</p>
         <div class="input-group mb-2">
@@ -394,7 +447,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -402,9 +455,9 @@
   <!-- Vodka 4 -->
   <div class="col produto">
     <div class="card">
-      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
+      <img src="heinekenln.png" class="card-img-top cerv-tamanho" alt="Vodka Example 4">
       <div class="card-body">
-        <h5 class="card-title">Vodka Absolut 1L</h5>
+        <h5 class="card-title">Heineken</h5>
         <p class="card-text">Carregando preço...</p>
         <p class="status-text" style="color: red; display: none;">(esgotado)</p>
         <div class="input-group mb-2">
@@ -412,7 +465,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -420,9 +473,9 @@
   <!-- Vodka 5 -->
   <div class="col produto">
     <div class="card">
-      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
+      <img src="stella.webp" class="card-img-top cerv-tamanho" alt="Vodka Example 5">
       <div class="card-body">
-        <h5 class="card-title">Vodka Orloff 900ml</h5>
+        <h5 class="card-title">Stella Artois</h5>
         <p class="card-text">Carregando preço...</p>
         <p class="status-text" style="color: red; display: none;">(esgotado)</p>
         <div class="input-group mb-2">
@@ -430,7 +483,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -438,9 +491,9 @@
   <!-- Vodka 6 -->
   <div class="col produto">
     <div class="card">
-      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
+      <img src="stellapg.jpg" class="card-img-top cerv-tamanho" alt="Vodka Example 6">
       <div class="card-body">
-        <h5 class="card-title">Vodka Eristoff 1L</h5>
+        <h5 class="card-title">Stella Artois Pure Gold (sem Glúten)</h5>
         <p class="card-text">Carregando preço...</p>
         <p class="status-text" style="color: red; display: none;">(esgotado)</p>
         <div class="input-group mb-2">
@@ -448,7 +501,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -456,9 +509,9 @@
   <!-- Vodka 7 -->
   <div class="col produto">
     <div class="card">
-      <img src="https://i.ibb.co/89HTFbh/askov.png" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
+      <img src="spaten.webp" class="card-img-top cerv-tamanho" alt="Vodka Example 7">
       <div class="card-body">
-        <h5 class="card-title">Vodka Grey Goose 1L</h5>
+        <h5 class="card-title">Spaten</h5>
         <p class="card-text">Carregando preço...</p>
         <p class="status-text" style="color: red; display: none;">(esgotado)</p>
         <div class="input-group mb-2">
@@ -466,7 +519,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -495,7 +548,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -513,7 +566,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -531,7 +584,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -549,7 +602,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -567,7 +620,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -585,7 +638,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -603,7 +656,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -633,7 +686,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -651,7 +704,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -669,7 +722,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -687,7 +740,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -705,7 +758,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -723,7 +776,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -741,7 +794,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -771,7 +824,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -789,7 +842,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -807,7 +860,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -825,7 +878,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -843,7 +896,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -861,7 +914,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -879,7 +932,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -911,7 +964,7 @@
         <input type="number" class="form-control text-center" value="0" min="0" />
         <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
       </div>
-      <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+      <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
     </div>
   </div>
   </div>
@@ -929,7 +982,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -947,7 +1000,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -965,7 +1018,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -983,7 +1036,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -1001,7 +1054,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -1019,7 +1072,7 @@
           <input type="number" class="form-control text-center" value="0" min="0" />
           <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
         </div>
-        <button class="btn btn-primary w-100 btn-comprar">Adicionar ao Carrinho</button>
+        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -1062,7 +1115,9 @@ function toggleCategoria(id) {
 <div id="carrinho" class="carrinho-lateral" ontouchstart="iniciarToque(event)" ontouchend="encerrarToque(event)">
   <div class="d-flex justify-content-between align-items-center mb-2">
     <h5 class="mb-0">Carrinho</h5>
-    <button class="btn btn-sm btn-outline-secondary" onclick="minimizarCarrinho()">⬇️</button>
+    <button class="btn btn-sm " onclick="minimizarCarrinho()">
+  <img src="minimize.png" alt="Minimizar" style="height:20px; width:20px;">
+</button>
   </div>
   <div id="itens-carrinho" class="mb-3"></div>
   <div class="fw-bold text-end me-2">Total: R$ <span id="total-geral">0,00</span></div>
@@ -1110,16 +1165,17 @@ function toggleCategoria(id) {
   <textarea id="observacoes" class="form-control" rows="2" placeholder="Ex: entrega no portão, troco para 50, etc."></textarea>
 </div>
 
-<div class="text-center">
-  <button class="btn btn-success btn-sm w-100" onclick="enviarPedido()">📤 Enviar Pedido</button>
+<div class="text-center" style="padding-bottom: 70px;">
+  <button class="btn btn-enviar-pedido w-100" onclick="enviarPedido()">Enviar Pedido</button>
 </div>
 
 </div>
 
 
       <!-- Botão Desktop -->
-<button id="botao-expandir" class="btn btn-primary botao-expandir d-none d-md-block" onclick="expandirCarrinho()">
-  🛒 Carrinho (<span id="total-carrinho">R$0,00</span>)
+<button id="botao-expandir" class="btn botao-expandir d-none d-md-block" onclick="expandirCarrinho()" style="background-color: #ffb700; color: #fff; border: none; font-weight: bold;">
+  <img src="carrinhominimizado.png" alt="Carrinho" style="height:24px; vertical-align:middle; margin-right:6px;">
+  Carrinho (<span id="total-carrinho">R$0,00</span>)
 </button>
 
 <!-- Botão Mobile -->
@@ -1150,29 +1206,30 @@ function toggleCategoria(id) {
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".btn-primary").forEach(btn => {
-        btn.addEventListener("click", function () {
-          const card = btn.closest(".card-body");
-          const nome = card.querySelector(".card-title").innerText;
-          const preco = parseFloat(card.querySelector(".card-text").innerText.replace("R$", "").replace(",", "."));
-          const quantidade = parseInt(card.querySelector("input").value, 10);
-          if (quantidade > 0) {
-            adicionarAoCarrinho(nome, quantidade, preco);
-            card.querySelector("input").value = 0;
-          }
-        });
-      });
-    });
-
-    function adicionarAoCarrinho(nome, quantidade, preco) {
-      const existente = carrinho.find(item => item.nome === nome);
-      if (existente) {
-        existente.quantidade += quantidade;
-      } else {
-        carrinho.push({ nome, quantidade, preco });
+  document.querySelectorAll(".btn-adicionar-carrinho").forEach(btn => {
+    btn.addEventListener("click", function () {
+      const card = btn.closest(".card-body");
+      const nome = card.querySelector(".card-title").innerText;
+      const preco = parseFloat(card.querySelector(".card-text").innerText.replace("R$", "").replace(",", "."));
+      const quantidade = parseInt(card.querySelector("input").value, 10);
+      const imagem = card.parentElement.querySelector("img").src;
+      if (quantidade > 0) {
+        adicionarAoCarrinho(nome, quantidade, preco, imagem);
+        card.querySelector("input").value = 0;
       }
-      atualizarCarrinho();
-    }
+    });
+  });
+});
+
+    function adicionarAoCarrinho(nome, quantidade, preco, imagem) {
+  const existente = carrinho.find(item => item.nome === nome);
+  if (existente) {
+    existente.quantidade += quantidade;
+  } else {
+    carrinho.push({ nome, quantidade, preco, imagem }); // <-- Adicione o campo imagem aqui!
+  }
+  atualizarCarrinho();
+}
 
     function removerItem(index) {
       if (confirm("Remover este item do carrinho?")) {
@@ -1192,16 +1249,24 @@ function toggleCategoria(id) {
     total += subtotal;
     totalItens += item.quantidade;
 
-    container.innerHTML += `
-      <div class="item d-flex justify-content-between align-items-start">
-        <div>
-          ${item.nome}<br>
-          ${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = 
-          <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
-        </div>
-        <button class="btn btn-sm btn-outline-danger ms-2" onclick="removerItem(${index})">🗑️</button>
+    // ...existing code...
+container.innerHTML += `
+  <div class="item d-flex justify-content-between align-items-center">
+    <div class="me-2" style="width:48px; min-width:48px; height:48px; display:flex; align-items:center; justify-content:center;">
+      <img src="${item.imagem}" alt="${item.nome}" style="height:40px; width:40px; object-fit:contain;">
+    </div>
+    <div class="flex-grow-1">
+      <div><strong>${item.nome}</strong></div>
+      <div>${item.quantidade} × R$ ${item.preco.toFixed(2).replace(".", ",")} = 
+        <strong>R$ ${subtotal.toFixed(2).replace(".", ",")}</strong>
       </div>
-    `;
+    </div>
+    <button class="btn btn-sm  ms-2" onclick="removerItem(${index})">
+  <img src="lixo.png" alt="Remover" style="height:20px; width:20px;">
+</button>
+  </div>
+`;
+// ...existing code...
   });
 
   const totalFormatado = `R$${total.toFixed(2).replace(".", ",")}`;
@@ -1322,7 +1387,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <script>
   const sheetID = '1LzPCbEkzyfXOel2UEYDlcyIBFRlgdep9G3ENvui8cqU';
   const apiKey = 'AIzaSyA-OqANUQu2qfRGsyFlB60oZ7XdcbaaMpI'; // Substitua pela sua chave
-  const range = 'Página1!A2:C10';
+  const range = 'Página1!A2:C235';
 
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/${range}?key=${apiKey}`;
 
@@ -1345,19 +1410,18 @@ document.addEventListener("DOMContentLoaded", () => {
           const [produto, preco, status] = linha;
           if (produto.trim().toLowerCase() === nome) {
             precoEl.textContent = preco;
-            if (status && status.trim().toLowerCase() === 'esgotado') {
-              statusEl.style.display = 'block';
-              botao.disabled = true;
-              botao.classList.remove('btn-primary');
-              botao.classList.add('btn-secondary');
-              botao.textContent = 'Esgotado';
-            } else {
-              statusEl.style.display = 'none';
-              botao.disabled = false;
-              botao.classList.remove('btn-secondary');
-              botao.classList.add('btn-primary');
-              botao.textContent = 'Adicionar ao Carrinho';
-            }
+            // ...dentro do seu fetch...
+if (status && status.trim().toLowerCase() === 'esgotado') {
+  botao.disabled = true;
+  botao.classList.remove('btn-adicionar-carrinho');
+  botao.classList.add('btn-secondary');
+  botao.textContent = 'Esgotado';
+} else {
+  botao.disabled = false;
+  botao.classList.remove('btn-secondary');
+  botao.classList.add('btn-adicionar-carrinho');
+  botao.textContent = 'Adicionar ao Carrinho';
+}
             encontrado = true;
             break;
           }
@@ -1367,7 +1431,7 @@ document.addEventListener("DOMContentLoaded", () => {
           precoEl.textContent = 'Preço indisponível';
           statusEl.style.display = 'none';
           botao.disabled = true;
-          botao.classList.remove('btn-primary');
+          botao.classList.remove('btn-adicionar-carrinho');
           botao.classList.add('btn-secondary');
           botao.textContent = 'Indisponível';
         }
@@ -1399,8 +1463,15 @@ document.addEventListener("DOMContentLoaded", () => {
     await OneSignal.init({
       appId: "59aebe5d-c72c-424e-ac0d-e18d7aad8358",
     });
+
+    // Quando a notificação é exibida no navegador (push visível ao usuário)
+    OneSignal.on('notificationDisplay', function(event) {
+      const titulo = event?.heading || "Nova notificação";
+      adicionarNotificacao(titulo);
+    });
   });
 </script>
+
 
 <!-- Banner de instalação -->
 <div id="install-banner" style="
@@ -1598,7 +1669,7 @@ document.addEventListener("DOMContentLoaded", function () {
                       <input type="number" class="form-control text-center" value="0" min="0" />
                       <button class="btn btn-outline-secondary btn-maior">+</button>
                     </div>
-                    <button class="btn ${status === 'esgotado' ? 'btn-secondary' : 'btn-primary'} w-100 btn-comprar" ${status === 'esgotado' ? 'disabled' : ''}>
+                    <button class="btn ${status === 'esgotado' ? 'btn-secondary' : 'btn-adicionar-carrinho'} w-100 btn-comprar" ${status === 'esgotado' ? 'disabled' : ''}>
                       ${status === 'esgotado' ? 'Esgotado' : 'Adicionar ao Carrinho'}
                     </button>
                   </div>
@@ -1626,7 +1697,7 @@ document.addEventListener("DOMContentLoaded", function () {
               btnComprar?.addEventListener("click", () => {
                 const quantidade = parseInt(input.value, 10);
                 if (quantidade > 0) {
-                  adicionarAoCarrinho(nome, quantidade, preco);
+                  adicionarAoCarrinho(nome, quantidade, preco, img);
                   atualizarCarrinho();
                   input.value = 0;
                 }
@@ -1683,6 +1754,93 @@ function atualizarTotalCarrinho() {
 }
 </script>
 
+<div id="painel-notificacoes" class="painel-notificacoes">
+  <h5 class="p-3 border-bottom">Notificações</h5>
+  <div id="lista-notificacoes" class="p-3" style="max-height: 70vh; overflow-y: auto;"></div>
+  <div class="text-center p-3 border-top">
+    <button class="btn btn-outline-danger btn-sm" onclick="limparNotificacoes()">Limpar todas</button>
+  </div>
+</div>
 
+<div id="overlay-notificacoes" class="overlay-notificacoes" onclick="fecharNotificacoes()"></div>
+
+<style>
+.painel-notificacoes {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 6px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  z-index: 2000;
+}
+.painel-notificacoes.aberto {
+  right: 0;
+}
+.overlay-notificacoes {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1500;
+}
+.overlay-notificacoes.ativo {
+  display: block;
+}
+</style>
+
+<script>
+  let notificacoes = [];
+
+function adicionarNotificacao(mensagem) {
+  notificacoes.push({ mensagem, lida: false });
+  atualizarNotificacoes();
+}
+
+function atualizarNotificacoes() {
+  const lista = document.getElementById("lista-notificacoes");
+  const contador = document.getElementById("contador-notificacoes");
+  
+  lista.innerHTML = "";
+  let naoLidas = 0;
+
+  notificacoes.forEach((n, index) => {
+    const div = document.createElement("div");
+    div.className = "notificacao border-bottom py-2";
+    div.innerHTML = `<small>${n.mensagem}</small>`;
+    lista.appendChild(div);
+
+    if (!n.lida) naoLidas++;
+  });
+
+  if (naoLidas > 0) {
+    contador.textContent = naoLidas;
+    contador.style.display = "inline-block";
+  } else {
+    contador.style.display = "none";
+  }
+}
+
+function abrirNotificacoes() {
+  notificacoes.forEach(n => n.lida = true);
+  atualizarNotificacoes();
+  document.getElementById("painel-notificacoes").classList.add("aberto");
+  document.getElementById("overlay-notificacoes").classList.add("ativo");
+}
+
+function fecharNotificacoes() {
+  document.getElementById("painel-notificacoes").classList.remove("aberto");
+  document.getElementById("overlay-notificacoes").classList.remove("ativo");
+}
+
+function limparNotificacoes() {
+  notificacoes = [];
+  atualizarNotificacoes();
+}
+
+</script>
 </body>
 </html>
