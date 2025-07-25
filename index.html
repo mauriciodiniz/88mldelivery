@@ -323,15 +323,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center; /* Alinha tudo verticalmente */
-  width: 80px;
+  width: 80px; /* padrão para desktop */
   text-align: center;
 }
 
 .btn-atalho {
-  width: 60px;
-  height: 60px;
-  padding: 10px;
+  width: 90px;
+  height: 90px;
+  padding: 15px;
   border-radius: 12px;
   border: 1px solid #ccc;
   background-color: white;
@@ -353,6 +352,18 @@
   font-size: 13px;
   color: #333;
   line-height: 1.2;
+}
+
+
+/* MOBILE: 3 colunas */
+@media (max-width: 768px) {
+  #atalhos-categorias {
+    justify-content: space-between !important;
+  }
+
+  .atalho {
+    width: calc(100% / 3 - 16px); /* 3 por linha com gap */
+  }
 }
 
 
