@@ -229,7 +229,6 @@
     }
   }
 
-  /* Modal fullscreen */
   #story-modal {
     position: fixed;
     inset: 0;
@@ -238,7 +237,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 9999;
+    z-index: 10002;
   }
 
   #story-modal img {
@@ -282,12 +281,79 @@
     position: absolute;
     top: 0;
     left: 0;
-    height: 5px;
+    height: 4px;
     background-color: #ffb700;
     width: 0%;
     transition: width 0.1s linear;
     z-index: 10000;
   }
+
+#atalhos-categorias {
+  gap: 15px;
+}
+
+.btn-atalho {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  width: 33%; /* 3 por linha no mobile */
+}
+
+@media(min-width: 768px) {
+  .btn-atalho {
+    width: auto;
+    margin-right: 15px;
+  }
+}
+
+.btn-atalho:hover {
+  opacity: 0.8;
+}
+
+.oculto {
+  display: none !important;
+}
+
+
+/* Estilo padrão dos atalhos */
+.atalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Alinha tudo verticalmente */
+  width: 80px;
+  text-align: center;
+}
+
+.btn-atalho {
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background-color: white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-atalho img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.atalho-label {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #333;
+  line-height: 1.2;
+}
 
 
 </style>
@@ -415,16 +481,126 @@
     align-items: flex-start;
     overflow-x: auto;
   ">
-  <!-- Stories são carregados dinamicamente -->
 </div>
 
-<!-- Modal dos stories -->
+<!-- Modal dos Stories -->
 <div id="story-modal">
   <div class="barra-progresso" id="progress-bar"></div>
   <span class="fechar-modal" onclick="fecharModal()">✕</span>
   <button class="story-nav esquerda" onclick="mudarImagem(-1)">⬅️</button>
   <img id="story-image" src="" alt="Storie" />
   <button class="story-nav direita" onclick="mudarImagem(1)">➡️</button>
+</div>
+
+<!-- Atalhos -->
+<div id="atalhos-categorias" class="atalhos-categorias d-flex flex-wrap justify-content-center gap-3 p-2 text-center">
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="cerveja">
+      <img src="redlabel.png" alt="Cerveja">
+    </button>
+    <span class="atalho-label">Cerveja</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="vodka">
+      <img src="redlabel.png" alt="Vodka">
+    </button>
+    <span class="atalho-label">Vodka</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="gin">
+      <img src="redlabel.png" alt="Gin">
+    </button>
+    <span class="atalho-label">Gin</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="whisky">
+      <img src="redlabel.png" alt="Whisky">
+    </button>
+    <span class="atalho-label">Whisky</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="tequila">
+      <img src="redlabel.png" alt="Tequila">
+    </button>
+    <span class="atalho-label">Tequila</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="rum">
+      <img src="redlabel.png" alt="Rum">
+    </button>
+    <span class="atalho-label">Rum</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="conhaque">
+      <img src="redlabel.png" alt="Conhaque">
+    </button>
+    <span class="atalho-label">Conhaque</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="cachaça">
+      <img src="redlabel.png" alt="Cachaça">
+    </button>
+    <span class="atalho-label">Cachaça</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="mais-bebidas">
+      <img src="redlabel.png" alt="+ Bebidas">
+    </button>
+    <span class="atalho-label">+ Bebidas</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="nao-alcoolicos">
+      <img src="redlabel.png" alt="Não alcoólicos">
+    </button>
+    <span class="atalho-label">Não alcoólicos</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="energeticos">
+      <img src="redlabel.png" alt="Energéticos">
+    </button>
+    <span class="atalho-label">Energéticos</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="conveniencia">
+      <img src="redlabel.png" alt="Conveniência">
+    </button>
+    <span class="atalho-label">Conveniência</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="bomboniere">
+      <img src="redlabel.png" alt="Bomboniere">
+    </button>
+    <span class="atalho-label">Bomboniere</span>
+  </div>
+
+  <div class="atalho">
+    <button class="btn-atalho" data-categoria="tira-gosto">
+      <img src="redlabel.png" alt="Tira-gosto">
+    </button>
+    <span class="atalho-label">Tira-gosto</span>
+  </div>
+
+</div>
+
+
+
+
+
+<div id="btn-voltar-container" style="display:none; text-align:center; margin:10px 0;">
+  <button id="btn-voltar">Voltar para início</button>
 </div>
 
 
@@ -451,7 +627,7 @@
 
         
             <!-- CATEGORIA VODKA -->
-             <div class="categoria-container">
+             <div class="categoria-container" data-categoria="vodka">
   <div class="card mt-4">
     <img src="https://i.ibb.co/6XtR7br/vodka.png" class="card-img-top cerv-tamanho" alt="Vodka">
     <div class="card-body">
@@ -486,7 +662,7 @@
              </div>
 
   <!-- CATEGORIA WHISKY -->
-   <div class="categoria-container">
+   <div class="categoria-container" data-categoria="whisky">
   <div class="card mt-4">
     <img src="https://i.ibb.co/5kJ6z7h/whisky.png" class="card-img-top cerv-tamanho" alt="Whisky">
     <div class="card-body">
@@ -520,8 +696,8 @@
   </div>
    </div>
 
-  <!-- CATEGORIA OUTROS -->
-   <div class="categoria-container">
+  <!-- CATEGORIA cerveja -->
+   <div class="categoria-container" data-categoria="cerveja">
   <div class="card mt-4">
     <img src="https://i.ibb.co/w07LTZF/energeticos.png" class="card-img-top cerv-tamanho" alt="Outros Produtos">
     <div class="card-body">
@@ -1681,10 +1857,33 @@ if (status && status.trim().toLowerCase() === 'esgotado') {
 <script>
 const campoBusca = document.getElementById("campo-busca");
 const botaoLimpar = document.getElementById("limpar-busca");
+const atalhosCategoriasDiv = document.getElementById("atalhos-categorias");
 
 // Mostrar ou esconder o botão "❌" conforme o conteúdo do input
 campoBusca.addEventListener("input", () => {
-  botaoLimpar.style.display = campoBusca.value.trim() ? "inline-block" : "none";
+  const termo = campoBusca.value.trim().toLowerCase();
+  botaoLimpar.style.display = termo ? "inline-block" : "none";
+
+  const categorias = document.querySelectorAll(".categoria-container");
+  let houveFiltro = false;
+
+  categorias.forEach(cat => {
+    const produtos = cat.querySelectorAll(".produto");
+    let algumVisivel = false;
+
+    produtos.forEach(prod => {
+      const nome = prod.querySelector(".card-title").textContent.toLowerCase();
+      const match = nome.includes(termo);
+      prod.style.display = match ? "block" : "none";
+      if (match) algumVisivel = true;
+    });
+
+    cat.style.display = algumVisivel ? "block" : "none";
+    if (algumVisivel) houveFiltro = true;
+  });
+
+  // Se houver texto na busca, adiciona a classe oculto
+  atalhosCategoriasDiv.classList.toggle("oculto", termo !== "");
 });
 
 // Ação de limpar busca
@@ -1692,26 +1891,29 @@ botaoLimpar.addEventListener("click", () => {
   campoBusca.value = "";
   botaoLimpar.style.display = "none";
   restaurarCategorias();
+
+  // Mostra novamente os atalhos
+  atalhosCategoriasDiv.classList.remove("oculto");
 });
 
-// Função auxiliar para restaurar todas as categorias colapsadas
+// Restaura todas as categorias e produtos
 function restaurarCategorias() {
   const categorias = document.querySelectorAll(".categoria-container");
 
   categorias.forEach(cat => {
     cat.style.display = "block";
     const divCategoria = cat.querySelector(".produtos-categoria");
-    if (divCategoria) {
-      divCategoria.style.display = "none";
-    }
+    if (divCategoria) divCategoria.style.display = "none";
 
-    const produtosDaCategoria = cat.querySelectorAll(".produto");
-    produtosDaCategoria.forEach(prod => {
-      prod.style.display = "block";
-    });
+    const produtos = cat.querySelectorAll(".produto");
+    produtos.forEach(prod => prod.style.display = "block");
   });
 }
 </script>
+
+
+
+
 
 <script>
   function abrirMenuLateral() {
@@ -1854,6 +2056,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     areaResultado.style.display = "none";
     campoBusca.value = "";
+    atalhosCategoriasDiv.classList.remove("oculto");
+
   });
 });
 </script>
@@ -1891,7 +2095,8 @@ const sheetIDnovo = '1LzPCbEkzyfXOel2UEYDlcyIBFRlgdep9G3ENvui8cqU';
 const apiKeynovo = 'AIzaSyA-OqANUQu2qfRGsyFlB60oZ7XdcbaaMpI';
 const rangenovo = "notificacoes!A2:C"; // Colunas: Título, Mensagem, Data
 
-const hoje = new Date().toISOString().slice(0, 10); // Formato: YYYY-MM-DD
+// Usa data local no formato ISO: "YYYY-MM-DD"
+const hoje = new Date().toLocaleDateString('sv-SE');
 
 fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetIDnovo}/values/${rangenovo}?key=${apiKeynovo}`)
   .then(response => response.json())
@@ -1903,6 +2108,8 @@ fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetIDnovo}/values/${ran
 
     notificacoes.forEach(([titulo, mensagem, dataHora]) => {
       if (!dataHora) return;
+
+      // Remove horas caso haja, e compara com data local
       const data = dataHora.slice(0, 10);
       if (data === hoje) {
         totalHoje++;
@@ -1938,10 +2145,11 @@ function fecharNotificacoes() {
 }
 </script>
 
+
 <script>
 const sheetID3 = "1LzPCbEkzyfXOel2UEYDlcyIBFRlgdep9G3ENvui8cqU";
 const apiKey3 = "AIzaSyA-OqANUQu2qfRGsyFlB60oZ7XdcbaaMpI";
-const range3 = "stories!A2:Z"; // A = nome, B em diante = imagens
+const range3 = "stories!A2:Z";
 
 let stories = [];
 let indiceAtual = 0;
@@ -1994,7 +2202,7 @@ fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetID3}/values/${range3
   })
   .catch(err => console.error("Erro ao carregar stories:", err));
 
-// Modal e transição
+// Lógica do modal
 function abrirModal(indice) {
   imagensAtuais = stories[indice].imagens;
   indiceAtual = 0;
@@ -2007,7 +2215,13 @@ function abrirModal(indice) {
 function exibirImagem() {
   const img = document.getElementById("story-image");
   img.src = imagensAtuais[indiceAtual];
-  atualizarBarraProgresso();
+  barraProgresso.style.transition = "none";
+  barraProgresso.style.width = "0%";
+  // Começa a animar depois de um pequeno delay
+  setTimeout(() => {
+    barraProgresso.style.transition = "width 10s linear";
+    barraProgresso.style.width = "100%";
+  }, 50);
 }
 
 function mudarImagem(direcao) {
@@ -2024,20 +2238,13 @@ function fecharModal() {
 }
 
 function iniciarAutoAvanco() {
-  let progresso = 0;
-  barraProgresso.style.width = "0%";
+  pararAutoAvanco(); // Garante que não há duplicatas
   intervaloAuto = setInterval(() => {
-    progresso += 1;
-    barraProgresso.style.width = `${progresso}%`;
-    if (progresso >= 100) {
-      mudarImagem(1);
-      progresso = 0;
-    }
-  }, 100); // 100ms x 100 = 10s
+    mudarImagem(1);
+  }, 10000);
 }
 
 function reiniciarAutoAvanco() {
-  pararAutoAvanco();
   iniciarAutoAvanco();
 }
 
@@ -2045,6 +2252,90 @@ function pararAutoAvanco() {
   clearInterval(intervaloAuto);
 }
 </script>
+
+<script>
+  const atalhos = document.querySelectorAll("#atalhos-categorias .btn-atalho");
+const categorias = document.querySelectorAll(".categoria-container");
+const btnVoltar = document.getElementById("btn-voltar");
+const btnVoltarContainer = document.getElementById("btn-voltar-container");
+
+atalhos.forEach(botao => {
+  botao.addEventListener("click", () => {
+    const cat = botao.getAttribute("data-categoria").toLowerCase();
+    categorias.forEach(catDiv => {
+      const categoriaNome = (catDiv.getAttribute("data-categoria") || "").toLowerCase();
+      if(categoriaNome === cat) {
+        catDiv.style.display = "block";
+      } else {
+        catDiv.style.display = "none";
+      }
+    });
+    btnVoltarContainer.style.display = "block";
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+btnVoltar.addEventListener("click", () => {
+  categorias.forEach(catDiv => {
+    catDiv.style.display = "block";
+  });
+  btnVoltarContainer.style.display = "none";
+});
+
+</script>
+
+<script>
+  const atalhos1 = document.querySelectorAll("#atalhos-categorias .btn-atalho");
+  const categorias1 = document.querySelectorAll(".categoria-container");
+  const btnVoltar1 = document.getElementById("btn-voltar");
+  const btnVoltarContainer1 = document.getElementById("btn-voltar-container");
+
+  const carrossel1 = document.getElementById("carouselExample");
+  const stories1 = document.getElementById("stories-container");
+  const atalhosContainer1 = document.getElementById("atalhos-categorias");
+  const campoBusca1 = document.getElementById("campo-busca");
+
+  atalhos1.forEach(botao => {
+    botao.addEventListener("click", () => {
+      const cat = botao.getAttribute("data-categoria").toLowerCase();
+
+      // Filtrar categorias
+      categorias1.forEach(catDiv => {
+        const categoriaNome = (catDiv.getAttribute("data-categoria") || "").toLowerCase();
+        catDiv.style.display = categoriaNome === cat ? "block" : "none";
+      });
+
+      // Ocultar elementos extras usando classe
+      if(carrossel1) carrossel1.classList.add("oculto");
+      if(stories1) stories1.classList.add("oculto");
+      if(atalhosContainer1) atalhosContainer1.classList.add("oculto");
+      if(campoBusca1) campoBusca1.classList.add("oculto");
+
+      // Mostrar botão voltar
+      if(btnVoltarContainer1) btnVoltarContainer1.classList.remove("oculto");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  if(btnVoltar1){
+    btnVoltar1.addEventListener("click", () => {
+      categorias1.forEach(catDiv => {
+        catDiv.style.display = "block";
+      });
+
+      // Mostrar elementos extras removendo classe
+      if(carrossel1) carrossel1.classList.remove("oculto");
+      if(stories1) stories1.classList.remove("oculto");
+      if(atalhosContainer1) atalhosContainer1.classList.remove("oculto");
+      if(campoBusca1) campoBusca1.classList.remove("oculto");
+
+      // Esconder botão voltar
+      if(btnVoltarContainer1) btnVoltarContainer1.classList.add("oculto");
+    });
+  }
+</script>
+
+
 
 
 
