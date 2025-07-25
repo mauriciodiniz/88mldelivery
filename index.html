@@ -288,58 +288,50 @@
     z-index: 10000;
   }
 
-#atalhos-categorias {
-  gap: 15px;
-}
-
-.btn-atalho {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  text-align: center;
-  font-size: 14px;
-  color: #333;
-  width: 33%; /* 3 por linha no mobile */
-}
-
-@media(min-width: 768px) {
-  .btn-atalho {
-    width: auto;
-    margin-right: 15px;
-  }
-}
-
-.btn-atalho:hover {
-  opacity: 0.8;
-}
-
+  
 .oculto {
   display: none !important;
 }
 
+/* Container principal */
+#atalhos-categorias {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 16px;
+  gap: 16px;
+}
 
-/* Estilo padrão dos atalhos */
+/* Bloco de cada atalho */
 .atalho {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80px; /* padrão para desktop */
-  text-align: center;
+  width: 30%; /* ~3 por linha no mobile */
+  max-width: 100px;
 }
 
+/* Botão quadrado */
 .btn-atalho {
-  width: 90px;
-  height: 90px;
-  padding: 15px;
-  border-radius: 12px;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* garante quadrado */
+  padding: 0;
   border: 1px solid #ccc;
-  background-color: white;
+  border-radius: 12px;
+  background-color: #fff;
   overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.15s ease;
 }
 
+.btn-atalho:hover {
+  transform: scale(1.03);
+}
+
+/* Imagem no botão */
 .btn-atalho img {
   width: 100%;
   height: 100%;
@@ -347,24 +339,37 @@
   border-radius: 12px;
 }
 
+/* Legenda */
 .atalho-label {
-  margin-top: 4px;
+  margin-top: 6px;
   font-size: 13px;
   color: #333;
+  text-align: center;
   line-height: 1.2;
 }
 
-
-/* MOBILE: 3 colunas */
-@media (max-width: 768px) {
+/* DESKTOP: tudo em uma linha */
+@media (min-width: 768px) {
   #atalhos-categorias {
-    justify-content: space-between !important;
+    justify-content: center;
+    gap: 20px;
+    padding: 24px;
   }
 
   .atalho {
-    width: calc(100% / 3 - 16px); /* 3 por linha com gap */
+    width: 70px; /* todos em linha */
+  }
+
+  .btn-atalho {
+    width: 70px;
+    height: 70px;
+  }
+
+  .atalho-label {
+    font-size: 12px;
   }
 }
+
 
 
 </style>
