@@ -247,25 +247,36 @@
   }
 
   .story-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2rem;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.4);
-    border: none;
-    padding: 8px 14px;
-    cursor: pointer;
-    z-index: 10001;
-  }
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent; /* Fundo totalmente transparente */
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 10001;
+}
 
-  .story-nav.esquerda {
-    left: 10px;
-  }
+.story-nav img {
+  width: 30px;            /* Tamanho menor */
+  height: 30px;
+  object-fit: contain;
+  opacity: 0.8;           /* Leve transparência da imagem */
+  transition: opacity 0.2s ease;
+}
 
-  .story-nav.direita {
-    right: 10px;
-  }
+.story-nav img:hover {
+  opacity: 1;             /* Totalmente visível ao passar o mouse */
+}
+
+.story-nav.esquerda {
+  left: 10px;
+}
+
+.story-nav.direita {
+  right: 10px;
+}
+
 
   .fechar-modal {
     position: absolute;
@@ -370,6 +381,28 @@
   }
 }
 
+.voltar-container {
+  display: none;
+  background-color: #f8f9fa;
+  padding: 10px 16px;
+  margin: 0;
+  text-align: right; /* botão à direita */
+}
+
+.btn-voltar {
+  background-color: #2b2b2b;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 16px; /* ajuste aqui conforme necessário */
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background-color: #1f1f1f;
+}
 
 
 </style>
@@ -388,7 +421,7 @@
 
   <!-- Texto centralizado -->
   <div class="mx-auto position-absolute start-50 top-50 translate-middle text-center" style="font-family: 'Francois One', sans-serif; font-size: 1.5rem; color: #ffffff;">
-    88ML DELIVERY
+    88ML DELIVERY APP
   </div>
 
   <!-- Ícone do sino na navbar -->
@@ -408,9 +441,6 @@
 </div>
 
 </nav>
-
-
-
 
 
 <!-- Painel lateral de notificações -->
@@ -503,10 +533,21 @@
 <div id="story-modal">
   <div class="barra-progresso" id="progress-bar"></div>
   <span class="fechar-modal" onclick="fecharModal()">✕</span>
-  <button class="story-nav esquerda" onclick="mudarImagem(-1)">⬅️</button>
+
+  <!-- Botão imagem esquerda -->
+  <button class="story-nav esquerda" onclick="mudarImagem(-1)">
+    <img src="setaesquerda.png" alt="Anterior" />
+  </button>
+
+  <!-- Imagem principal do stories -->
   <img id="story-image" src="" alt="Storie" />
-  <button class="story-nav direita" onclick="mudarImagem(1)">➡️</button>
+
+  <!-- Botão imagem direita -->
+  <button class="story-nav direita" onclick="mudarImagem(1)">
+    <img src="setadireita.png" alt="Próximo" />
+  </button>
 </div>
+
 
 <!-- Atalhos -->
 <div id="atalhos-categorias" class="atalhos-categorias d-flex flex-wrap justify-content-center gap-3 p-2 text-center">
@@ -611,13 +652,10 @@
 
 </div>
 
-
-
-
-
-<div id="btn-voltar-container" style="display:none; text-align:center; margin:10px 0;">
-  <button id="btn-voltar">Voltar para início</button>
+<div id="btn-voltar-container" class="voltar-container">
+  <button id="btn-voltar" class="btn-voltar">Voltar para início</button>
 </div>
+
 
 
   <!-- Catálogo -->
@@ -1448,6 +1486,7 @@ function toggleCategoria(id) {
   <img src="minimize.png" alt="Minimizar" style="height:20px; width:20px;">
 </button>
   </div>
+  <p id="mensagem-vazio" class="text-center text-muted">Carrinho vazio</p>
   <div id="itens-carrinho" class="mb-3"></div>
   <div class="fw-bold text-end me-2">Total: R$ <span id="total-geral">0,00</span></div>
 
@@ -1557,13 +1596,17 @@ function toggleCategoria(id) {
   } else {
     carrinho.push({ nome, quantidade, preco, imagem }); // <-- Adicione o campo imagem aqui!
   }
+  
   atualizarCarrinho();
+  atualizarMensagemCarrinhoVazio();
 }
 
     function removerItem(index) {
       if (confirm("Remover este item do carrinho?")) {
         carrinho.splice(index, 1);
+        
         atualizarCarrinho();
+        atualizarMensagemCarrinhoVazio();
       }
     }
 
@@ -2351,7 +2394,22 @@ btnVoltar.addEventListener("click", () => {
   }
 </script>
 
+<script>
+  function atualizarMensagemCarrinhoVazio() {
+  const container = document.getElementById("itens-carrinho");
+  const mensagem = document.getElementById("mensagem-vazio");
 
+  const temItens = container.children.length > 0;
+
+  if (!temItens) {
+    mensagem.style.display = "block";
+  } else {
+    mensagem.style.display = "none";
+  }
+}
+
+
+</script>
 
 
 
