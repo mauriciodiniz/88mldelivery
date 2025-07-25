@@ -1939,9 +1939,9 @@ function fecharNotificacoes() {
 </script>
 
 <script>
-const sheetID = "1LzPCbEkzyfXOel2UEYDlcyIBFRlgdep9G3ENvui8cqU";
-const apiKey = "AIzaSyA-OqANUQu2qfRGsyFlB60oZ7XdcbaaMpI";
-const range = "stories!A2:Z"; // A = nome, B em diante = imagens
+const sheetID3 = "1LzPCbEkzyfXOel2UEYDlcyIBFRlgdep9G3ENvui8cqU";
+const apiKey3 = "AIzaSyA-OqANUQu2qfRGsyFlB60oZ7XdcbaaMpI";
+const range3 = "stories!A2:Z"; // A = nome, B em diante = imagens
 
 let stories = [];
 let indiceAtual = 0;
@@ -1949,7 +1949,7 @@ let imagensAtuais = [];
 let intervaloAuto;
 let barraProgresso;
 
-fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/${range}?key=${apiKey}`)
+fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetID3}/values/${range3}?key=${apiKey3}`)
   .then(r => r.json())
   .then(data => {
     const linhas = data.values || [];
