@@ -215,7 +215,82 @@
 }
 
 
-  </style>
+  #stories-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  #stories-container > div {
+    scroll-snap-align: center;
+  }
+
+  @media (max-width: 768px) {
+    #stories-container {
+      justify-content: flex-start;
+    }
+  }
+
+  /* Modal fullscreen */
+  #story-modal {
+    position: fixed;
+    inset: 0;
+    background-color: #000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+  #story-modal img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .story-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+    z-index: 10001;
+  }
+
+  .story-nav.esquerda {
+    left: 10px;
+  }
+
+  .story-nav.direita {
+    right: 10px;
+  }
+
+  .fechar-modal {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    z-index: 10001;
+  }
+
+  .barra-progresso {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    background-color: #ffb700;
+    width: 0%;
+    transition: width 0.1s linear;
+    z-index: 10000;
+  }
+
+
+</style>
 </head>
 <body>
 
@@ -234,16 +309,53 @@
     88ML DELIVERY
   </div>
 
-  <!-- Ícone de notificação alinhado à direita -->
-  <div id="icone-notificacao" class="position-absolute end-0 top-50 translate-middle-y me-3" onclick="abrirNotificacoes()">
-    <img src="sino.png" alt="Notificações" style="height: 24px; cursor: pointer;">
-    <span id="contador-notificacoes" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display: none;">
-      0
-    </span>
-  </div>
+  <!-- Ícone do sino na navbar -->
+<div class="d-flex align-items-center position-relative me-3" style="margin-left: auto;" onclick="abrirNotificacoes()" id="icone-notificacao">
+  <img src="sino.png" alt="Notificações" style="height: 28px;">
+  <span id="contador-notificacoes" style="
+    display: none;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 50%;
+  ">0</span>
+</div>
 
 </nav>
 
+
+
+
+
+<!-- Painel lateral de notificações -->
+<div id="painel-notificacoes" style="
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+  z-index: 9999;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  padding: 15px;
+">
+  <h5>Notificações</h5>
+  <div id="lista-notificacoes"></div>
+</div>
+
+<div id="overlay-notificacao" style="
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+  z-index: 9998;
+" onclick="fecharNotificacoes()"></div>
 
 
 
@@ -290,6 +402,31 @@
       <span class="carousel-control-next-icon"></span>
     </button>
   </div>
+
+<!-- Stories Scroll Horizontal -->
+<div id="stories-container" class="d-flex flex-row overflow-auto mx-auto"
+  style="
+    max-width: 100%;
+    gap: 12px;
+    padding: 10px 16px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    justify-content: center;
+    align-items: flex-start;
+    overflow-x: auto;
+  ">
+  <!-- Stories são carregados dinamicamente -->
+</div>
+
+<!-- Modal dos stories -->
+<div id="story-modal">
+  <div class="barra-progresso" id="progress-bar"></div>
+  <span class="fechar-modal" onclick="fecharModal()">✕</span>
+  <button class="story-nav esquerda" onclick="mudarImagem(-1)">⬅️</button>
+  <img id="story-image" src="" alt="Storie" />
+  <button class="story-nav direita" onclick="mudarImagem(1)">➡️</button>
+</div>
+
 
   <!-- Catálogo -->
   <section id="catalogo" class="py-5 bg-light">
@@ -1463,15 +1600,8 @@ if (status && status.trim().toLowerCase() === 'esgotado') {
     await OneSignal.init({
       appId: "59aebe5d-c72c-424e-ac0d-e18d7aad8358",
     });
-
-    // Quando a notificação é exibida no navegador (push visível ao usuário)
-    OneSignal.on('notificationDisplay', function(event) {
-      const titulo = event?.heading || "Nova notificação";
-      adicionarNotificacao(titulo);
-    });
   });
 </script>
-
 
 <!-- Banner de instalação -->
 <div id="install-banner" style="
@@ -1754,93 +1884,169 @@ function atualizarTotalCarrinho() {
 }
 </script>
 
-<div id="painel-notificacoes" class="painel-notificacoes">
-  <h5 class="p-3 border-bottom">Notificações</h5>
-  <div id="lista-notificacoes" class="p-3" style="max-height: 70vh; overflow-y: auto;"></div>
-  <div class="text-center p-3 border-top">
-    <button class="btn btn-outline-danger btn-sm" onclick="limparNotificacoes()">Limpar todas</button>
-  </div>
-</div>
 
-<div id="overlay-notificacoes" class="overlay-notificacoes" onclick="fecharNotificacoes()"></div>
-
-<style>
-.painel-notificacoes {
-  position: fixed;
-  top: 0;
-  right: -300px;
-  width: 300px;
-  height: 100%;
-  background: white;
-  box-shadow: -2px 0 6px rgba(0,0,0,0.2);
-  transition: right 0.3s ease;
-  z-index: 2000;
-}
-.painel-notificacoes.aberto {
-  right: 0;
-}
-.overlay-notificacoes {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1500;
-}
-.overlay-notificacoes.ativo {
-  display: block;
-}
-</style>
 
 <script>
-  let notificacoes = [];
+const sheetIDnovo = '1LzPCbEkzyfXOel2UEYDlcyIBFRlgdep9G3ENvui8cqU';
+const apiKeynovo = 'AIzaSyA-OqANUQu2qfRGsyFlB60oZ7XdcbaaMpI';
+const rangenovo = "notificacoes!A2:C"; // Colunas: Título, Mensagem, Data
 
-function adicionarNotificacao(mensagem) {
-  notificacoes.push({ mensagem, lida: false });
-  atualizarNotificacoes();
-}
+const hoje = new Date().toISOString().slice(0, 10); // Formato: YYYY-MM-DD
 
-function atualizarNotificacoes() {
-  const lista = document.getElementById("lista-notificacoes");
-  const contador = document.getElementById("contador-notificacoes");
-  
-  lista.innerHTML = "";
-  let naoLidas = 0;
+fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetIDnovo}/values/${rangenovo}?key=${apiKeynovo}`)
+  .then(response => response.json())
+  .then(data => {
+    const notificacoes = data.values || [];
+    const lista = document.getElementById("lista-notificacoes");
+    const contador = document.getElementById("contador-notificacoes");
+    let totalHoje = 0;
 
-  notificacoes.forEach((n, index) => {
-    const div = document.createElement("div");
-    div.className = "notificacao border-bottom py-2";
-    div.innerHTML = `<small>${n.mensagem}</small>`;
-    lista.appendChild(div);
+    notificacoes.forEach(([titulo, mensagem, dataHora]) => {
+      if (!dataHora) return;
+      const data = dataHora.slice(0, 10);
+      if (data === hoje) {
+        totalHoje++;
+        const div = document.createElement("div");
+        div.innerHTML = `
+          <strong>${titulo}</strong><br>
+          <small>${mensagem}</small>
+          <hr>
+        `;
+        lista.appendChild(div);
+      }
+    });
 
-    if (!n.lida) naoLidas++;
+    if (totalHoje > 0) {
+      contador.textContent = totalHoje;
+      contador.style.display = "block";
+    } else {
+      contador.style.display = "none";
+    }
+  })
+  .catch(err => {
+    console.error("Erro ao carregar notificações:", err);
   });
 
-  if (naoLidas > 0) {
-    contador.textContent = naoLidas;
-    contador.style.display = "inline-block";
-  } else {
-    contador.style.display = "none";
-  }
-}
-
 function abrirNotificacoes() {
-  notificacoes.forEach(n => n.lida = true);
-  atualizarNotificacoes();
-  document.getElementById("painel-notificacoes").classList.add("aberto");
-  document.getElementById("overlay-notificacoes").classList.add("ativo");
+  document.getElementById("painel-notificacoes").style.right = "0";
+  document.getElementById("overlay-notificacao").style.display = "block";
 }
 
 function fecharNotificacoes() {
-  document.getElementById("painel-notificacoes").classList.remove("aberto");
-  document.getElementById("overlay-notificacoes").classList.remove("ativo");
+  document.getElementById("painel-notificacoes").style.right = "-100%";
+  document.getElementById("overlay-notificacao").style.display = "none";
 }
-
-function limparNotificacoes() {
-  notificacoes = [];
-  atualizarNotificacoes();
-}
-
 </script>
+
+<script>
+const sheetID = "1LzPCbEkzyfXOel2UEYDlcyIBFRlgdep9G3ENvui8cqU";
+const apiKey = "AIzaSyA-OqANUQu2qfRGsyFlB60oZ7XdcbaaMpI";
+const range = "stories!A2:Z"; // A = nome, B em diante = imagens
+
+let stories = [];
+let indiceAtual = 0;
+let imagensAtuais = [];
+let intervaloAuto;
+let barraProgresso;
+
+fetch(`https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/${range}?key=${apiKey}`)
+  .then(r => r.json())
+  .then(data => {
+    const linhas = data.values || [];
+    const container = document.getElementById("stories-container");
+
+    linhas.forEach((linha, index) => {
+      const nome = linha[0];
+      const imagens = linha.slice(1).filter(Boolean);
+      if (!nome || imagens.length === 0) return;
+
+      stories.push({ nome, imagens });
+
+      const wrapper = document.createElement("div");
+      wrapper.style.display = "flex";
+      wrapper.style.flexDirection = "column";
+      wrapper.style.alignItems = "center";
+      wrapper.style.flex = "0 0 auto";
+      wrapper.style.width = "80px";
+      wrapper.style.cursor = "pointer";
+
+      const circle = document.createElement("div");
+      circle.style.width = "70px";
+      circle.style.height = "70px";
+      circle.style.borderRadius = "50%";
+      circle.style.border = "3px solid #ffb700";
+      circle.style.backgroundImage = `url(${imagens[0]})`;
+      circle.style.backgroundSize = "cover";
+      circle.style.backgroundPosition = "center";
+
+      const label = document.createElement("span");
+      label.textContent = nome;
+      label.style.fontSize = "12px";
+      label.style.marginTop = "5px";
+      label.style.textAlign = "center";
+      label.style.color = "#333";
+
+      wrapper.appendChild(circle);
+      wrapper.appendChild(label);
+      wrapper.onclick = () => abrirModal(index);
+      container.appendChild(wrapper);
+    });
+  })
+  .catch(err => console.error("Erro ao carregar stories:", err));
+
+// Modal e transição
+function abrirModal(indice) {
+  imagensAtuais = stories[indice].imagens;
+  indiceAtual = 0;
+  document.getElementById("story-modal").style.display = "flex";
+  barraProgresso = document.getElementById("progress-bar");
+  exibirImagem();
+  iniciarAutoAvanco();
+}
+
+function exibirImagem() {
+  const img = document.getElementById("story-image");
+  img.src = imagensAtuais[indiceAtual];
+  atualizarBarraProgresso();
+}
+
+function mudarImagem(direcao) {
+  indiceAtual += direcao;
+  if (indiceAtual < 0) indiceAtual = imagensAtuais.length - 1;
+  if (indiceAtual >= imagensAtuais.length) indiceAtual = 0;
+  exibirImagem();
+  reiniciarAutoAvanco();
+}
+
+function fecharModal() {
+  document.getElementById("story-modal").style.display = "none";
+  pararAutoAvanco();
+}
+
+function iniciarAutoAvanco() {
+  let progresso = 0;
+  barraProgresso.style.width = "0%";
+  intervaloAuto = setInterval(() => {
+    progresso += 1;
+    barraProgresso.style.width = `${progresso}%`;
+    if (progresso >= 100) {
+      mudarImagem(1);
+      progresso = 0;
+    }
+  }, 100); // 100ms x 100 = 10s
+}
+
+function reiniciarAutoAvanco() {
+  pararAutoAvanco();
+  iniciarAutoAvanco();
+}
+
+function pararAutoAvanco() {
+  clearInterval(intervaloAuto);
+}
+</script>
+
+
+
 </body>
 </html>
