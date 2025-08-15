@@ -273,7 +273,7 @@
     <h4 class="mb-0">🔎 Resultados encontrados</h4>
     <button id="voltar-catalogo" class="btn btn-warning btn-sm">Voltar ao Catálogo</button>
   </div>
-  <div id="resultado-busca" class="row row-cols-2 row-cols-md-3 g-4"></div>
+  <div id="resultado-busca" class="row row-cols-1 row-cols-md-3 g-4"></div>
 </div>
 
   <!-- CATEGORIA OFERTAS -->
@@ -288,7 +288,7 @@
           Produtos 10% off (válido de 26/07/2025 à 30/07/2025)
         </button>
         <div id="cat-ofertas" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -323,49 +323,54 @@
           CERVEJA LONG NECK
         </button>
         <div id="cat-longneck" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
 
   <!-- long neck 1 -->
   <!-- Repare no data-produto -->
-<div class="col produto">
-  <div class="card" data-produto="budweiser">
-    <img src="Bebidas/budweiser.jpeg" class="card-img-top cerv-tamanho" alt="Budweiser long neck">
-    <div class="card-body">
-      <h5 class="card-title">Budweiser</h5>
-      <p>
-        <!-- Placeholder: nada de "Erro ao carregar" -->
-        <span class="card-text">
-          <span class="price-skeleton">Carregando preço…</span>
-        </span>
-        <span class="status-text" style="color: red; display: none;">(esgotado)</span>
-      </p>
-      <div class="input-group mb-2">
-        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-        <input type="number" class="form-control text-center" value="0" min="0" />
-        <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+  <div class="col produto">
+    <div class="card">
+      <div class="card-body card-body-flex">
+        <img src="Bebidas/budweiser.jpeg" class="card-img-top cerv-tamanho card-img-mobile" alt="Budweiser long neck">
+        <div class="conteudo-card">
+          <h5 class="card-title">Budweiser</h5>
+          <p>
+            <span class="card-text">
+              <span class="price-skeleton">Carregando preço…</span>
+            </span>
+            <span class="status-text" style="color: red; display: none;">(esgotado)</span>
+          </p>
+          <div class="input-group mb-2">
+            <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+            <input type="number" class="form-control text-center" value="0" min="0" />
+            <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+          </div>
+          <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
+        </div>
       </div>
-      <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
     </div>
   </div>
-</div>
 
 
   <!-- long neck 2 -->
   <div class="col produto">
     <div class="card">
-      <img src="Bebidas/corona.jpeg" class="card-img-top cerv-tamanho" alt="Corona long neck">
-      <div class="card-body">
-        <h5 class="card-title">Corona</h5>
-        <p>
-           <span class="card-text">Carregando preço...</span>
-           <span class="status-text" style="color: red; display: none;">(esgotado)</span>
-        </p>
-        <div class="input-group mb-2">
-          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
-          <input type="number" class="form-control text-center" value="0" min="0" />
-          <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+      <div class="card-body card-body-flex">
+        <img src="Bebidas/corona.jpeg" class="card-img-top cerv-tamanho card-img-mobile" alt="Corona long neck">
+        <div class="conteudo-card">
+          <h5 class="card-title">Corona</h5>
+          <p>
+            <span class="card-text">
+              <span class="price-skeleton">Carregando preço…</span>
+            </span>
+            <span class="status-text" style="color: red; display: none;">(esgotado)</span>
+          </p>
+          <div class="input-group mb-2">
+            <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, -1)">-</button>
+            <input type="number" class="form-control text-center" value="0" min="0" />
+            <button class="btn btn-outline-secondary" onclick="alterarQuantidade(this, 1)">+</button>
+          </div>
+          <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
         </div>
-        <button class="btn btn-adicionar-carrinho w-100 btn-comprar">Adicionar ao Carrinho</button>
       </div>
     </div>
   </div>
@@ -585,7 +590,7 @@
           CERVEJA LONG NECK (SEM ÁLCOOL)
         </button>
         <div id="cat-longneckzero" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
   <!-- Vodka 1 -->
   <div class="col produto">
     <div class="card">
@@ -723,7 +728,7 @@
           CERVEJA LATÃO 473ML
         </button>
         <div id="cat-latao" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
   <!-- Vodka 1 -->
   <div class="col produto">
     <div class="card">
@@ -861,7 +866,7 @@
           FARDO CERVEJA LATÃO 473ML (12 UNIDADES)
         </button>
         <div id="cat-fardo" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
   <!-- Vodka 1 -->
   <div class="col produto">
     <div class="card">
@@ -999,7 +1004,7 @@
           CERVEJA GARRAFA 600ML
         </button>
         <div id="cat-garrafa" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
   <!-- Vodka 1 -->
   <div class="col produto">
     <div class="card">
@@ -1148,7 +1153,7 @@
           Rum
         </button>
         <div id="cat-destilados" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -1183,7 +1188,7 @@
           Vinhos (diversos)
         </button>
         <div id="cat-vinhos" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -1218,7 +1223,7 @@
           Whisky Premium
         </button>
         <div id="cat-whisky" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
 
 
             <div class="col produto">
@@ -1403,7 +1408,7 @@
           Whisky (Mais Vendidos)
         </button>
         <div id="cat-whisky2" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
 
 
             <div class="col produto">
@@ -1474,7 +1479,7 @@
           Whisky (Mais opções)
         </button>
         <div id="cat-whisky3" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
 
 
             <div class="col produto">
@@ -1577,7 +1582,7 @@
           Vodka Premium
         </button>
         <div id="cat-vodka" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -1612,7 +1617,7 @@
           Gin Premium
         </button>
         <div id="cat-gin" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -1647,7 +1652,7 @@
           Água
         </button>
         <div id="cat-nao-alcoolicos" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -1682,7 +1687,7 @@
           Energético latão 473ml
         </button>
         <div id="cat-energeticos" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -1717,7 +1722,7 @@
           Variados
         </button>
         <div id="cat-conveniencia" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -1752,7 +1757,7 @@
           Balas
         </button>
         <div id="cat-bomboniere" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -1787,7 +1792,7 @@
           Salgadinhos
         </button>
         <div id="cat-tira-gosto" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
@@ -1826,7 +1831,7 @@
           Vodkas Diversas
         </button>
         <div id="cat-vodka" class="produtos-categoria mt-3" style="display: none;">
-          <div class="row row-cols-2 row-cols-md-5 g-4 justify-content-center">
+          <div class="row row-cols-1 row-cols-md-5 g-4 justify-content-center">
             <div class="col produto">
               <div class="card">
                 <img src="Bebidas/bebida.png" class="card-img-top cerv-tamanho" alt="Vodka Askov">
