@@ -408,3 +408,33 @@
     background-position: 0% center;
   }
 }
+
+/* Layout flexível só no mobile */
+.card-body-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 12px;
+}
+.card-img-mobile {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+.conteudo-card {
+  flex: 1 1 0%;
+}
+
+/* No desktop, volta ao padrão coluna */
+@media (min-width: 768px) {
+  .card-body-flex {
+    display: block;
+  }
+  .card-img-mobile {
+    width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+  }
+}
