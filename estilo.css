@@ -129,12 +129,14 @@
     .categoria-btn {
   background-color: #ffffff; /* cor personalizada */
   color: #2e2e2e;
-  border: none;
+  border-bottom: 1px solid #e0e0e0;
   height: 80px;
+  margin: 2px;
 }
 .categoria-btn:hover {
-  background-color: #fab403;
-  color: rgb(45, 45, 45);
+  background-color: #ffffff;
+  border: 2px solid #fab403;
+  
 }
 
 .btn-app img {
@@ -387,28 +389,6 @@
   background-color: #1f1f1f;
 }
 
-.dourado-brilhante {
-  background: linear-gradient(90deg, #fce2a0, #fefdfa, #ffbf1e);
-  background-size: 200% auto;
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: brilhoDourado 5s ease-in-out infinite;
-}
-
-@keyframes brilhoDourado {
-  0% {
-    background-position: 0% center;
-  }
-  50% {
-    background-position: 100% center;
-  }
-  100% {
-    background-position: 0% center;
-  }
-}
-
 /* Layout flexível só no mobile */
 .card-body-flex {
   display: flex;
@@ -417,8 +397,8 @@
   gap: 12px;
 }
 .card-img-mobile {
-  width: 90px;
-  height: 170px;
+  width: 170px;
+  height: 200px;
   object-fit: contain;
   flex-shrink: 0;
   margin-bottom: 0;
@@ -439,3 +419,120 @@
   }
 }
 
+/* Classe de animação */
+.preco-animado {
+  display: inline-block;
+  position: relative;
+  font-weight: bold;
+  animation: destaquePreco 0.3s ease-out forwards;
+  overflow: visible;
+}
+
+.preco-animado .particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: yellow;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  animation: particula 0.8s ease-out forwards;
+}
+
+@keyframes destaquePreco {
+  0% {
+    transform: scale(1);
+    color: yellow;
+    text-shadow: 0 0 5px yellow, 0 0 15px orange, 0 0 25px red;
+  }
+  40% {
+    transform: scale(1.2);
+    text-shadow: 0 0 15px yellow, 0 0 30px orange, 0 0 45px red;
+  }
+  70% {
+    transform: scale(1.1);
+    color: orange;
+  }
+  100% {
+    transform: scale(1);
+    color: black;
+    text-shadow: none;
+  }
+}
+
+@keyframes particula {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(0.3);
+  }
+}
+
+#card-ofertas{
+  background-color: #ff415a;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-cervejas{
+  background-color: #dbdbdb;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-destilados{
+  background-color: #e5b65b;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-vinhos{
+  background-color: #532f50;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-whisky{
+  background-color: #ca8a1a;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-vodka{
+  background-color: #0d8ede;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-gin{
+  background-color: #1c9052;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-naoalcoolicos{
+  background-color: #ce410f;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-energeticos{
+  background-color: #171823;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-bomboniere{
+  background-color: #e8cba7;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#card-churrasco{
+  background-color: #000000;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
