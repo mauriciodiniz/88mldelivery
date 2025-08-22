@@ -1,9 +1,9 @@
 {
   "name": "88ml Delivery",
-  "short_name": "88ml",
+  "short_name": "88ml Delivery",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "background_color": "#c75034",
   "theme_color": "#fab403",
   "icons": [
     {
